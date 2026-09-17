@@ -180,6 +180,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
         }
 
         .card:hover {
@@ -190,7 +191,7 @@
         .card img {
             width: 100%;
             height: 180px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 6px;
             margin-bottom: 1rem;
             background-color: #f1f5f9;
@@ -212,6 +213,56 @@
             font-size: 1.2rem;
             font-weight: bold;
             color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .buy-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .buy-btn:hover {
+            background-color: #0369a1;
+        }
+
+        /* Modale d'agrandissement d'image */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         /* Pied de page */
@@ -240,6 +291,21 @@
             margin-right: 6px;
             vertical-align: middle;
         }
+
+        .badge-out-of-stock {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #dc2626;
+            color: #ffffff;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+            z-index: 5;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -263,7 +329,9 @@
             <button class="tab-btn" onclick="openBrand('babolat', this)">Babolat</button>
             <button class="tab-btn" onclick="openBrand('maxbolt', this)">Maxbolt</button>
             <button class="tab-btn" onclick="openBrand('lining', this)">Li-Ning</button>
-            <button class="tab-btn" onclick="openBrand('oliver', this)">Oliver / Black Knight</button>
+ 	    <button class="tab-btn" onclick="openBrand('victor', this)">VICTOR</button>
+ 	    <button class="tab-btn" onclick="openBrand('fzforza', this)">FZ FORZA</button>
+ 	    <button class="tab-btn" onclick="openBrand('rsl', this)">RSL</button>
         </div>
     </nav>
 
@@ -283,6 +351,7 @@
                         <p class="specs">Neutre — Semi-Rigide (4U)</p>
                     </div>
                     <p class="price">80,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/yonexarc11plays.jpeg')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/yonexarc11plays.jpeg" alt="Yonex Arcsaber 11 Play">
@@ -291,6 +360,7 @@
                         <p class="specs">Neutre — Rigide (4U)</p>
                     </div>
                     <p class="price">205,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/yonexarc11plays.jpeg')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/yonexarc11plays.jpeg" alt="Yonex ArcSaber 11 Pro">
@@ -303,6 +373,7 @@
                         <span class="discount-tag">-10%</span>
                         216,00 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/yonexarc11plays.jpeg')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/yonexarc11plays.jpeg" alt="Yonex Nanoflare 700">
@@ -312,6 +383,7 @@
                         <span class="discount-tag">Epuisé, sur commande</span>
                     </div>
                     <p class="price">179,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/yonexarc11plays.jpeg')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/nanoflare700.jpeg" alt="Yonex Nanoflare 700 game">
@@ -320,6 +392,7 @@
                         <p class="specs">En manche léger — Souple (4U)</p>
                     </div>
                     <p class="price">80,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/nanoflare700.jpeg')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ARCSABER 2.jpeg" alt="RAQUETTE DE BADMINTON YONEX ARCSABER 2">
@@ -329,6 +402,7 @@
                         <p class="specs">Neutre — très souple (4U4)</p>
                     </div>
                     <p class="price">85,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ARCSABER 2.jpeg')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ARCSABER 7 PLAY.jpeg" alt="RAQUETTE DE BADMINTON YONEX ARCSABER 7 PLAY">
@@ -337,6 +411,7 @@
                         <p class="specs">Neutre — Souple (4U)</p>
                     </div>
                     <p class="price">70,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ARCSABER 7 PLAY.jpeg')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 02 CLEAR (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX 02 CLEAR (CORDEE)">
@@ -345,6 +420,7 @@
                         <p class="specs">En tête léger — Très Souple (3U/4U)</p>
                     </div>
                     <p class="price">80,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 02 CLEAR (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX NEXTAGE (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX NEXTAGE (CORDEE)">
@@ -357,6 +433,7 @@
                         <span class="discount-tag">-10%</span>
                         126,00 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX NEXTAGE (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 001 ABILITY (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX NANOFLARE 001 ABILITY (CORDEE)">
@@ -365,6 +442,7 @@
                         <p class="specs">En manche léger — Souple (5U)</p>
                     </div>
                     <p class="price">45,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 001 ABILITY (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 002 CLEAR - 4U (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX NANOFLARE 002 CLEAR - 4U (CORDEE)">
@@ -373,6 +451,7 @@
                         <p class="specs">En manche léger — Très souple (4U)</p>
                     </div>
                     <p class="price">75,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 002 CLEAR - 4U (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 1000 GAME 4U5 (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX NANOFLARE 1000 GAME 4U5 (CORDEE)">
@@ -381,6 +460,7 @@
                         <p class="specs">En manche léger — Medium (4U)</p>
                     </div>
                     <p class="price">140,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 1000 GAME 4U5 (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 1000 GAME 4U5 (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX NANOFLARE 1000 GAME 4U5 (CORDEE)">
@@ -389,6 +469,7 @@
                         <p class="specs">En manche léger — Medium (4U)</p>
                     </div>
                     <p class="price">90,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 1000 GAME 4U5 (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 1000 GAME 4U5 (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX NANOFLARE 1000 GAME 4U5 (CORDEE)">
@@ -401,6 +482,7 @@
                         <span class="discount-tag">-10%</span>
                         234,00 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 1000 GAME 4U5 (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE NEXTAGE 4U5 (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX NANOFLARE NEXTAGE 4U5 (CORDEE)">
@@ -408,11 +490,12 @@
                         <h4>RAQUETTE DE BADMINTON YONEX NANOFLARE NEXTAGE 4U5 (CORDEE)</h4>
                         <p class="specs">Équilibre manche léger — Médium (4U)</p>
                     </div>
-                <p class="price">
+                    <p class="price">
                         <span class="old-price">130,00 €</span>
                         <span class="discount-tag">-10%</span>
                         117,00 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE NEXTAGE 4U5 (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 88D PRO 3U4 (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX 88D PRO 3U4 (NON CORDEE)">
@@ -420,11 +503,12 @@
                         <h4>RAQUETTE DE BADMINTON YONEX ASTROX 88D PRO 3U4 (NON CORDEE)</h4>
                         <p class="specs">En tête fort — Rigide (4U)</p>
                     </div>
-                  <p class="price">
+                    <p class="price">
                         <span class="old-price">240,00 €</span>
                         <span class="discount-tag">-10%</span>
                         216,00 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 88D PRO 3U4 (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 99 TOUR 4U5 BLACK GREEN (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX 99 TOUR 4U5 BLACK GREEN (NON CORDEE)">
@@ -432,11 +516,12 @@
                         <h4>RAQUETTE DE BADMINTON YONEX ASTROX 99 TOUR 4U5 BLACK/GREEN (NON CORDEE)</h4>
                         <p class="specs">En tête léger — Rigide (4U)</p>
                     </div>
-                   <p class="price">
+                    <p class="price">
                         <span class="old-price">210,00 €</span>
                         <span class="discount-tag">-10%</span>
                         189,00 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 99 TOUR 4U5 BLACK GREEN (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE)">
@@ -445,6 +530,7 @@
                         <p class="specs">En tête fort — Rigide (4U)</p>
                     </div>
                     <p class="price">190,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 800 TOUR DEEP GREEN 4U5 (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX NANOFLARE 800 TOUR DEEP GREEN 4U5 (NON CORDEE)">
@@ -457,6 +543,7 @@
                         <span class="discount-tag">-10%</span>
                         162,00 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 800 TOUR DEEP GREEN 4U5 (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 700 PLAY 4U5 MIDNIGHT PURPLE (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX NANOFLARE 700 PLAY 4U5 MIDNIGHT PURPLE (CORDEE)">
@@ -465,6 +552,7 @@
                         <p class="specs">En tête manche — Souple (4U5)</p>
                     </div>
                     <p class="price">80,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX NANOFLARE 700 PLAY 4U5 MIDNIGHT PURPLE (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE)">
@@ -472,11 +560,12 @@
                         <h4>RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE)</h4>
                         <p class="specs">En tête fort — Rigide (4U)</p>
                     </div>
-                  <p class="price">
+                    <p class="price">
                         <span class="old-price">190,00 €</span>
                         <span class="discount-tag">-10%</span>
                         171,00 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE)">
@@ -489,6 +578,7 @@
                         <span class="discount-tag">-10%</span>
                         216,00 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 88S TOUR 4U5 (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 77 PRO (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX 77 PRO (NON CORDEE)">
@@ -497,6 +587,7 @@
                         <p class="specs">En tête léger — médium (4U)</p>
                     </div>
                     <p class="price">200,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 77 PRO (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 77 PRO (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX 77 PRO (NON CORDEE)">
@@ -505,6 +596,7 @@
                         <p class="specs">En tête léger — médium (4U)</p>
                     </div>
                     <p class="price">150,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 77 PRO (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 77 PRO (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON YONEX ASTROX 77 PRO (NON CORDEE)">
@@ -513,6 +605,7 @@
                         <p class="specs">En tête léger — souple (4U)</p>
                     </div>
                     <p class="price">60,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON YONEX ASTROX 77 PRO (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
             </div>
         </div>
@@ -528,65 +621,71 @@
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON BABOLAT SATELITE RISE S (CORDEE - SANS HOUSSE).JPEG" alt="RAQUETTE DE BADMINTON BABOLAT SATELITE RISE S (CORDEE - SANS HOUSSE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON BABOLAT SATELITE RISE S (CORDEE)</h4>
-                        <p class="specs">Neutre — Semi-rigide</p>
+                        <p class="specs">Neutre — Semi-rigide — 4U</p>
                     </div>
                     <p class="price">59,95 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON BABOLAT SATELITE RISE S (CORDEE - SANS HOUSSE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON BABOLAT SATELITE SPIRE S (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON BABOLAT SATELITE SPIRE S (CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON BABOLAT SATELITE SPIRE S (CORDEE)</h4>
-                        <p class="specs">Neutre — médium</p>
+                        <p class="specs">Neutre — médium — 4U</p>
                     </div>
                     <p class="price">
                         <span class="old-price">89,95 €</span>
                         <span class="discount-tag">-10%</span>
                         80,95 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON BABOLAT SATELITE SPIRE S (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON BABOLAT SATELITE MASTER.JPEG" alt="RAQUETTE DE BADMINTON BABOLAT SATELITE MASTER">
                     <div>
                         <h4>RAQUETTE DE BADMINTON BABOLAT SATELITE MASTER S (NON CORDEE)</h4>
-                        <p class="specs">Neutre — Souple</p>
+                        <p class="specs">Neutre — Souple — 3U</p>
                     </div>
                     <p class="price">149,95 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON BABOLAT SATELITE MASTER.JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON BABOLAT SATELITE ORIGIN (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON BABOLAT SATELITE ORIGIN (CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON BABOLAT SATELITE ORIGIN (CORDEE)</h4>
-                        <p class="specs">Manche léger — Souple</p>
+                        <p class="specs">Manche léger — Souple — 4U</p>
                     </div>
                     <p class="price">
                         <span class="old-price">109,95 €</span>
                         <span class="discount-tag">-10%</span>
                         98,95 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON BABOLAT SATELITE ORIGIN (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON BABOLAT JETSTREAM 80 (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON BABOLAT JETSTREAM 80 (CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON BABOLAT JETSTREAM 80 (CORDEE)</h4>
-                        <p class="specs">Manche léger — Semi-souple</p>
+                        <p class="specs">Manche léger — Semi-souple — 4U</p>
                     </div>
                     <p class="price">
                         <span class="old-price">199,95 €</span>
                         <span class="discount-tag">-15%</span>
                         118,95 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON BABOLAT JETSTREAM 80 (CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON BABOLAT JETSTREAM 78 (CORDEE).JPEG" alt="RAQUETTE DE BADMINTON BABOLAT JETSTREAM 78 (CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON BABOLAT JETSTREAM 78 (CORDEE)</h4>
-                        <p class="specs">Neutre — Médium</p>
+                        <p class="specs">Neutre — Médium — 5U</p>
                     </div>
                     <p class="price">
                         <span class="old-price">99,95 €</span>
                         <span class="discount-tag">-10%</span>
                         89,95 €
                     </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON BABOLAT JETSTREAM 78 (CORDEE).JPEG')">Voir le produit</button>
                 </div>
             </div>
         </div>
@@ -602,201 +701,218 @@
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT BLACK FORCE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT BLACK FORCE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT BLACK FORCE (NON CORDEE)</h4>
-                        <p class="specs">Puissance d'attaque maximum</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en tête — 4U</p>
                     </div>
-                    <p class="price">185,00 €</p>
+                    <p class="price">89,30 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT BLACK FORCE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT GALLANT FORCE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT GALLANT FORCE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT GALLANT FORCE (NON CORDEE)</h4>
-                        <p class="specs">Jeu rapide et réactif</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en tête — 4U</p>
                     </div>
-                    <p class="price">169,00 €</p>
+                    <p class="price">96,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT GALLANT FORCE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT GALLANT SAKIKO NOIRE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT GALLANT SAKIKO NOIRE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT GALLANT SAKIKO NOIRE (NON CORDEE)</h4>
-                        <p class="specs">Polyvalence & Contrôle (4U)</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en tête — 4U</p>
                     </div>
-                    <p class="price">199,00 €</p>
+                    <p class="price">91,50 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT GALLANT SAKIKO NOIRE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT GALLANT SAKIKO NENG MAWAR EDITION  (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT GALLANT SAKIKO NENG MAWAR EDITION  (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT GALLANT SAKIKO NENG MAWAR EDITION  (NON CORDEE)</h4>
-                        <p class="specs">En tête — Rigide (Attaque)</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en tête — 4U</p>
                     </div>
-                    <p class="price">175,00 €</p>
+                    <p class="price">91,50 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT GALLANT SAKIKO NENG MAWAR EDITION  (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT NANO 1280 (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT NANO 1280 (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT NANO 1280 (NON CORDEE)</h4>
-                        <p class="specs">Vitesse & Précision ultime</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre — 4U</p>
+                        <span class="badge-out-of-stock">Rupture de stock</span>
                     </div>
-                    <p class="price">205,00 €</p>
+                    <p class="price">91,50 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT NANO 1280 (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT NEZER X LIGHT BLACK (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT NEZER X LIGHT BLACK (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT NEZER X LIGHT BLACK (NON CORDEE)</h4>
-                        <p class="specs">Équilibre neutre — Medium</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre — 5U</p>
                     </div>
-                    <p class="price">145,00 €</p>
+                    <p class="price">119,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT NEZER X LIGHT BLACK (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT NEZER X LIGHT WHITE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT NEZER X LIGHT WHITE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT NEZER X LIGHT WHITE (NON CORDEE)</h4>
-                        <p class="specs">Ultra légère (78g) — Attaque rapide</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre — 5U</p>
                     </div>
-                    <p class="price">115,00 €</p>
+                    <p class="price">119,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT NEZER X LIGHT WHITE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SILVER (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT SILVER (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT SILVER (NON CORDEE)</h4>
-                        <p class="specs">Maniabilité & Reprise de volée</p>
+                        <p class="specs">Tige medium — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">130,00 €</p>
+                    <p class="price">91,50 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SILVER (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR ACE  NOIR - PARIS PACK.JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR ACE  NOIR - PARIS PACK">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR ACE  NOIR - PARIS PACK</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                   <p class="price">
+                        <span class="old-price">169,90 €</span>
+                        <span class="discount-tag">-20%</span>
+                        135,90 €
+                    </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR ACE  NOIR - PARIS PACK.JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR ACE  BLANC - PARIS PACK.JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR ACE  BLANC - PARIS PACK">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR ACE  BLANC - PARIS PACK</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                   <p class="price">
+                        <span class="old-price">169,90 €</span>
+                        <span class="discount-tag">-20%</span>
+                        135,90 €
+                    </p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR ACE  BLANC - PARIS PACK.JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE BADMINTON MAXBOLT SUPERSTAR II BLEU.JPEG" alt="RAQUETTE BADMINTON MAXBOLT SUPERSTAR II BLEU">
                     <div>
                         <h4>RAQUETTE BADMINTON MAXBOLT SUPERSTAR II BLEU</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige medium — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">96,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE BADMINTON MAXBOLT SUPERSTAR II BLEU.JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE BADMINTON MAXBOLT SUPERSTAR II ROUGE.JPEG" alt="RAQUETTE BADMINTON MAXBOLT SUPERSTAR II ROUGE">
                     <div>
                         <h4>RAQUETTE BADMINTON MAXBOLT SUPERSTAR II ROUGE</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige medium — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">96,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE BADMINTON MAXBOLT SUPERSTAR II ROUGE.JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR 10 - 4U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR 10 - 4U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR 10 - 4U (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige rigide — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">109,10 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR 10 - 4U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR LT BLUE NATURE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR LT BLUE NATURE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR LT BLUE NATURE (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre — 5U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">96,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR LT BLUE NATURE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR SWIFT (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR SWIFT (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR SWIFT (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige souple — Equilibre en neutre — 5U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">98,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR SWIFT (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige medium — Equilibre en tête — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">78,30 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT GREEN WHITE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT GREEN WHITE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT GREEN WHITE (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige medium — Equilibre en tête — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">78,30 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT GREEN WHITE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT JB PACK (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT JB PACK (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT JB PACK (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige medium — Equilibre en tête — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">78,30 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT JB PACK (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT NAVY WHITE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT NAVY WHITE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT NAVY WHITE (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige medium — Equilibre en tête — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">78,30 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT NAVY WHITE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige medium — Equilibre en tête — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">78,30 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
-                <div class="card">
-                    <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE)">
-                    <div>
-                        <h4>RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
-                    </div>
-                    <p class="price">55,00 €</p>
-                </div>
-                <div class="card">
-                    <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT BLUE WHITE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT WHITE BLUE (NON CORDEE)">
-                    <div>
-                        <h4>RAQUETTE DE BADMINTON MAXBOLT THUNDERBOLT WHITE BLUE (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
-                    </div>
-                    <p class="price">55,00 €</p>
-                </div>
+                
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT WOVEN TEC 60 PINK (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT WOVEN TEC 60 PINK (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT WOVEN TEC 60 PINK (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">89,39 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT WOVEN TEC 60 PINK (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT WOVEN TEC 90 DRAGON (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT WOVEN TEC 90 DRAGON (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT WOVEN TEC 90 DRAGON (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige semi-rigide — Equilibre légèremenr en tête — 4U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">162,75 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT WOVEN TEC 90 DRAGON (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR LT PINK NATURE (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR LT PINK NATURE (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR LT PINK NATURE (NON CORDEE)</h4>
-                        <p class="specs">Souple — Idéal débutant / loisir</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre — 5U</p>
                     </div>
-                    <p class="price">55,00 €</p>
+                    <p class="price">89,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON MAXBOLT SUPERSTAR LT PINK NATURE (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
             </div>
         </div>
@@ -812,95 +928,256 @@
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX 500 3U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON LI-NING BLADEX 500 3U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON LI-NING BLADEX 500 3U (NON CORDEE)</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en manche — 3U</p>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">159,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX 500 3U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON LI-NING HALBERTEC 8000 3U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON LI-NING HALBERTEC 8000 3U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON LI-NING HALBERTEC 8000 3U (NON CORDEE)</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <p class="specs">Tige rigide — Equilibre en neutre — 3U</p>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">249,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON LI-NING HALBERTEC 8000 3U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX 600 4U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON LI-NING BLADEX 600 4U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON LI-NING BLADEX 600 4U (NON CORDEE)</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <p class="specs">Tige semi-rigide — Equilibre en manche — 4U</p>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">189,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX 600 4U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON LI-NING AXFORCE 70 GREY 5U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON LI-NING AXFORCE 70 GREY 5U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON LI-NING AXFORCE 70 GREY 5U (NON CORDEE)</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <p class="specs">Tige souple — Equilibre en tête — 5U</p>
+                        <span class="badge-out-of-stock">Rupture de stock</span>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">229,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON LI-NING AXFORCE 70 GREY 5U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX 900 MOON MAX 4U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON LI-NING BLADEX 900 MOON MAX 4U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON LI-NING BLADEX 900 MOON MAX 4U (NON CORDEE)</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <p class="specs">Tige très rigide — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">269,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX 900 MOON MAX 4U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX 700 4U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON LI-NING BLADEX 700 4U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON LI-NING BLADEX 700 4U (NON CORDEE)</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <p class="specs">Tige medium — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">229,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX 700 4U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX SONAR BLUE 4U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON LI-NING BLADEX SONAR BLUE 4U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON LI-NING BLADEX SONAR BLUE 4U (NON CORDEE)</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <p class="specs">Tige medium — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">149,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON LI-NING BLADEX SONAR BLUE 4U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON LI-NING WINDSTORM 72 6U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON LI-NING WINDSTORM 72 6U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON LI-NING WINDSTORM 72 6U (NON CORDEE)</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <p class="specs">Tige souple — Equilibre en tête — 6U</p>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">129,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON LI-NING WINDSTORM 72 6U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
                     <img src="photo/raquettes/RAQUETTE DE BADMINTON LI-NING HALBERTEC 9000 4U (NON CORDEE).JPEG" alt="RAQUETTE DE BADMINTON LI-NING HALBERTEC 9000 4U (NON CORDEE)">
                     <div>
                         <h4>RAQUETTE DE BADMINTON LI-NING HALBERTEC 9000 4U (NON CORDEE)</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <p class="specs">Tige rigide — Equilibre en neutre — 4U</p>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">249,90 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON LI-NING HALBERTEC 9000 4U (NON CORDEE).JPEG')">Voir le produit</button>
                 </div>
             </div>
         </div>
 
-        <!-- OLIVER / BLACK KNIGHT -->
-        <div id="oliver" class="brand-section active">
+<!-- VICTOR -->
+        <div id="victor" class="brand-section active">
             <div class="brand-header">
-                <h2 class="brand-title">Oliver / Black Knight</h2>
+                <h2 class="brand-title">VICTOR</h2>
                 <span class="brand-badge">Marque Officielle</span>
             </div>
             <div class="grid">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=500" alt="Oliver Delta 5">
+                    <img src="photo/raquettes/Thruster Ryuga II Pro B .JPEG" alt="Thruster Ryuga II Pro B ">
                     <div>
-                        <h4>Oliver Delta 5</h4>
-                        <p class="specs">Tige souple — Confort de jeu</p>
+                        <h4>Thruster Ryuga II Pro B </h4>
+                        <p class="specs">Tige rigide — Equilibre en tête — 3U</p>
                     </div>
-                    <p class="price">89,00 €</p>
+                    <p class="price">219,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/Thruster Ryuga II Pro B .JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/Auraspeed Light Fighter 40.JPEG" alt="Auraspeed Light Fighter 40">
+                    <div>
+                        <h4>Auraspeed Light Fighter 40</h4>
+                        <p class="specs">Tige rigide — Equilibre légèrement en tête — 6U</p>
+                    </div>
+                    <p class="price">129,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/Auraspeed Light Fighter 40.JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/Thruster K 1H H.JPEG" alt="Thruster K 1H H">
+                    <div>
+                        <h4>Thruster K 1H H</h4>
+                        <p class="specs">Tige souple — Equilibre en neutre — 4U</p>
+                    </div>
+                    <p class="price">85,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/Thruster K 1H H.JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/Wavetec magan 7.JPEG" alt="Wavetec magan 7">
+                    <div>
+                        <h4>Wavetec magan 7</h4>
+                        <p class="specs">Tige semi-rigide — Equilibre en manche — 3U</p>
+                    </div>
+                    <p class="price">79,95 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/Wavetec magan 7.JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/Auraspeed 100X Ultra G.JPEG" alt="Auraspeed 100X Ultra G ">
+                    <div>
+                        <h4>Auraspeed 100X Ultra G</h4>
+                        <p class="specs">Tige rigide — Equilibre en neutre — 4U</p>
+                    </div>
+                    <p class="price">239,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/Auraspeed 100X Ultra G.JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/Auraspeed 7100 R vert.JPEG" alt="Auraspeed 7100 R vert">
+                    <div>
+                        <h4>Auraspeed 7100 R vert</h4>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre — 4U</p>
+                    </div>
+                    <p class="price">79,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/Auraspeed 7100 R vert.JPEG')">Voir le produit</button>
                 </div>
             </div>
         </div>
 
+        <!-- FZ FORZA -->
+        <div id="fzforza" class="brand-section active">
+            <div class="brand-header">
+                <h2 class="brand-title">FZ FORZA </h2>
+                <span class="brand-badge">Marque Officielle</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/raquettes/RAQUETTE DE BADMINTON FORZA LIGHT AIR 74 (CORDEE) .JPEG" alt="RAQUETTE DE BADMINTON FORZA LIGHT AIR 74 (CORDEE) ">
+                    <div>
+                        <h4>RAQUETTE DE BADMINTON FORZA LIGHT AIR 74 (CORDEE) </h4>
+                        <p class="specs">Tige medium — Equilibre en neutre - 5U</p>
+                    </div>
+                    <p class="price">110,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON FORZA LIGHT AIR 74 (CORDEE) .JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/RAQUETTE DE BADMINTON FZ FORZA AERO POWER 472 POSEIDON (CORDEE) .JPEG" alt="RAQUETTE DE BADMINTON FZ FORZA AERO POWER 472 POSEIDON (CORDEE) ">
+                    <div>
+                        <h4>RAQUETTE DE BADMINTON FZ FORZA AERO POWER 472 POSEIDON (CORDEE) </h4>
+                        <p class="specs">Tige souple — Equilibre en tête - 3U</p>
+                    </div>
+                    <p class="price">59,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON FZ FORZA AERO POWER 472 POSEIDON (CORDEE) .JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/RAQUETTE DE BADMINTON FORZA HT PRECISION 72F V2 (CORDEE) .JPEG" alt="RAQUETTE DE BADMINTON FORZA HT PRECISION 72F V2 (CORDEE) ">
+                    <div>
+                        <h4>RAQUETTE DE BADMINTON FORZA HT PRECISION 72F V2 (CORDEE) </h4>
+                        <p class="specs">Tige souple — Equilibre en neutre - 4U</p>
+                    </div>
+                    <p class="price">89,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON FORZA HT PRECISION 72F V2 (CORDEE) .JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/RAQUETTE DE BADMINTON FZ FORZA PRECISION TI-X1 (CORDEE) .JPEG" alt="RAQUETTE DE BADMINTON FZ FORZA PRECISION TI-X1 (CORDEE) ">
+                    <div>
+                        <h4>RAQUETTE DE BADMINTON FZ FORZA PRECISION TI-X1 (CORDEE) </h4>
+                        <p class="specs">Tige souple — Equilibre en manche - 3U</p>
+                    </div>
+                    <p class="price">89,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON FZ FORZA PRECISION TI-X1 (CORDEE) .JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/RAQUETTE DE BADMINTON FZ FORZA PRECISION TI-X3 (CORDEE) .JPEG" alt="RAQUETTE DE BADMINTON FZ FORZA PRECISION TI-X3 (CORDEE) ">
+                    <div>
+                        <h4>RAQUETTE DE BADMINTON FZ FORZA PRECISION TI-X3 (CORDEE) </h4>
+                        <p class="specs">Tige semi-rigide — Equilibre en neutre - 4U</p>
+                    </div>
+                    <p class="price">79,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON FZ FORZA PRECISION TI-X3 (CORDEE) .JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RSL -->
+        <div id="rsl" class="brand-section active">
+            <div class="brand-header">
+                <h2 class="brand-title">RSL</h2>
+                <span class="brand-badge">Marque Officielle</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/raquettes/RAQUETTE DE BADMINTON RSL GRAVITE GA-944 (CORDEE) .JPEG" alt="RAQUETTE DE BADMINTON RSL GRAVITE GA-944 (CORDEE) ">
+                    <div>
+                        <h4>RAQUETTE DE BADMINTON RSL GRAVITE GA-944 (CORDEE) </h4>
+                        <p class="specs">Tige rigide — Equilibre en neutre - 3U</p>
+                    </div>
+                    <p class="price">200,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON RSL GRAVITE GA-944 (CORDEE) .JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/RAQUETTE DE BADMINTON RSL GRAVITE GA-924 (CORDEE) .JPEG" alt="RAQUETTE DE BADMINTON RSL GRAVITE GA-924 (CORDEE) ">
+                    <div>
+                        <h4>RAQUETTE DE BADMINTON RSL GRAVITE GA-924 (CORDEE) </h4>
+                        <p class="specs">Tige rigide — Equilibre en manche - 4U</p>
+                    </div>
+                    <p class="price">180,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON RSL GRAVITE GA-924 (CORDEE) .JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/RAQUETTE DE BADMINTON RSL NOVA 07 (CORDEE) .JPEG" alt="RAQUETTE DE BADMINTON RSL NOVA 07 (CORDEE) ">
+                    <div>
+                        <h4>RAQUETTE DE BADMINTON RSL NOVA 07 (CORDEE) </h4>
+                        <p class="specs">Tige medium — Equilibre en neutre - 4U</p>
+                    </div>
+                    <p class="price">90,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON RSL NOVA 07 (CORDEE) .JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/raquettes/RAQUETTE DE BADMINTON RSL GRAVITE GA-911 (CORDEE) .JPEG" alt="RAQUETTE DE BADMINTON RSL GRAVITE GA-911 (CORDEE) ">
+                    <div>
+                        <h4>RAQUETTE DE BADMINTON RSL GRAVITE GA-911 (CORDEE) </h4>
+                        <p class="specs">Tige medium — Equilibre en manche - 3U</p>
+                    </div>
+                    <p class="price">140,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/raquettes/RAQUETTE DE BADMINTON RSL GRAVITE GA-911 (CORDEE) .JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Modale d'affichage d'image en grand -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg" src="" alt="Image agrandie">
     </div>
 
     <footer>
@@ -925,6 +1202,18 @@
                     section.classList.remove('active');
                 }
             });
+        }
+
+        /* Fonctions pour afficher/masquer la modale de l'image */
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'flex';
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
         }
     </script>
 </body>
