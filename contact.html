@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Magasin — Lardesports Martinique</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #0284c7;
+            --badge-color: #e0f2fe;
+            --light-bg: #f8fafc;
+            --dark-text: #1f2937;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* En-tête */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background-color: #e2e8f0;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #475569;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        /* Grille de contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-card h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--badge-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .info-list a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Formulaire de contact */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+        }
+
+        .btn-submit {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #0369a1;
+        }
+
+        /* Carte Google Maps */
+        .map-container {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 380px;
+            border: 0;
+            border-radius: 6px;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--badge-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lardesports Martinique</h1>
+        <p>Contactez votre spécialiste Badminton & Venez nous rendre visite en magasin</p>
+    </header>
+
+    <nav>
+        <a href="index.html" class="nav-btn">Accueil</a>
+        <a href="raquettes.html" class="nav-btn">Raquettes</a>
+        <a href="chaussures.html" class="nav-btn">Chaussures</a>
+        <a href="volants.html" class="nav-btn">Volants</a>
+        <a href="cordages.html" class="nav-btn">Cordages</a>
+        <a href="vetements.html" class="nav-btn">Vêtements</a>
+        <a href="sacs.html" class="nav-btn">Sacs</a>
+        <a href="accesoires.html" class="nav-btn">Accessoires</a>
+        <a href="contact.html" class="nav-btn active">Contact & Magasin</a>
+    </nav>
+
+    <div class="container">
+        <h2 class="section-title">Informations & Message</h2>
+
+        <div class="contact-grid">
+            
+            <!-- Informations & Horaires -->
+            <div class="contact-card">
+                <h3>📍 Coordonnées du Magasin</h3>
+                <ul class="info-list">
+                    <li><strong>Adresse :</strong> Centre Commercial Patio de Cluny, 97233 Schoelcher</li>
+                    <li><strong>Téléphone :</strong> <a href="tel:0696891983">06 96 89 19 83</a></li>
+                    <li><strong>Email :</strong> <a href="mailto:magasinmartinique@lardesports.com">magasinmartinique@lardesports.com</a></li>
+                    <li><strong>Site Internet :</strong> <a href="https://lardesportsmartinique.fr" target="_blank" rel="noopener">lardesportsmartinique.fr</a></li>
+                </ul>
+
+                <h3 style="margin-top: 1.5rem;">🕒 Horaires d'Ouverture</h3>
+                <ul class="info-list">
+                    <li><strong>Mardi - Vendredi :</strong> 13h30 - 18h30</li>
+                    <li><strong>Samedi :</strong> 10h00 - 18h00</li>
+                    <li><strong>Dimanche :</strong> 10h00 - 13h00</li>
+                    <li><strong>Lundi :</strong> Fermé</li>
+                </ul>
+            </div>
+
+            <!-- Formulaire de Contact -->
+            <div class="contact-card">
+                <h3>✉️ Envoyer un message</h3>
+                <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Votre message a bien été envoyé !');">
+                    <div class="form-group">
+                        <label for="name">Nom / Prénom *</label>
+                        <input type="text" id="name" name="name" required placeholder="Ex: Jean Dupont">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Adresse Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="Ex: jean.dupont@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Sujet de votre demande</label>
+                        <select id="subject" name="subject">
+                            <option value="cordage">Renseignement Cordage / Recordage</option>
+                            <option value="conseil">Conseil Matériel (Raquette, Chaussures...)</option>
+                            <option value="stock">Disponibilité d'un produit en magasin</option>
+                            <option value="autre">Autre demande</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Détaillez votre demande ici..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Envoyer mon message</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Plan d'accès Google Maps -->
+        <h2 class="section-title">Plan d'Accès</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.836040842828!2d-61.0820!3d14.6133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTQsDM2JzQ3LjkiTiA2McKwMDQ1NS4yIlc!5e0!3m2!1sfr!2sfr!4v1680000000000!5m2!1sfr!2sfr" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lardesports Martinique — Le Spécialiste Badminton en Martinique | <a href="https://lardesportsmartinique.fr" target="_blank" rel="noopener">lardesportsmartinique.fr</a></p>
+    </footer>
+
+</body>
+</html>
