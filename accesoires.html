@@ -1,190 +1,244 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessoires de Badminton - Lardesports Martinique</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits bientôt disponibles — Lardesports Martinique</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #0284c7;
+            --badge-color: #e0f2fe;
+            --light-bg: #f8fafc;
+            --dark-text: #1f2937;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
 
-    body {
-      background-color: #f4f4f9;
-      color: #333;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    header {
-      background-color: #1b2a4a;
-      color: #fff;
-      padding: 1rem 2rem;
-      text-align: center;
-    }
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    nav {
-      background-color: #0f172a;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 10px;
-      flex-wrap: wrap;
-    }
+        /* En-tête */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
 
-    nav a:hover, nav a.active {
-      background-color: #2563eb;
-    }
+        header p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    h2 {
-      margin-bottom: 1.5rem;
-      color: #1b2a4a;
-      text-align: center;
-    }
+        .nav-btn {
+            background-color: #e2e8f0;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #475569;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+        .nav-btn:hover, .nav-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
 
-    .product-card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 15px;
-      text-align: center;
-    }
+        /* Conteneur principal */
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .product-card img {
-      max-width: 100%;
-      height: 180px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
+        /* Carte d'annonce d'attente */
+        .coming-soon-card {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border-top: 6px solid var(--accent-color);
+            width: 100%;
+        }
 
-    .product-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      color: #111827;
-    }
+        .icon-badge {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
 
-    .product-card p.description {
-      font-size: 0.9rem;
-      color: #6b7280;
-      margin-bottom: 15px;
-    }
+        .coming-soon-card h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
 
-    .product-card .price {
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: #2563eb;
-      margin-bottom: 15px;
-    }
+        .coming-soon-card p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    .buy-btn {
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s;
-    }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
 
-    .buy-btn:hover {
-      background-color: #1d4ed8;
-    }
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
 
-    footer {
-      background-color: #1b2a4a;
-      color: #fff;
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 3rem;
-    }
-  </style>
+        .btn-primary:hover {
+            background-color: #0369a1;
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbd5e1;
+        }
+
+        /* Infos magasin en encadré */
+        .store-quick-info {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .store-quick-info a {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .store-quick-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--badge-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Lardesports Martinique</h1>
-    <p>Votre spécialiste badminton à Schoelcher</p>
-  </header>
+    <header>
+        <h1>Lardesports Martinique</h1>
+        <p>Votre spécialiste 100% Badminton en Martinique — Raquettes, Volants, Cordages & Équipements</p>
+    </header>
 
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="raquettes.html">Raquettes</a>
-    <a href="volants.html">Volants</a>
-    <a href="chaussures.html">Chaussures</a>
-    <a href="cordages.html">Cordages</a>
-    <a href="vetements.html">Vêtements</a>
-    <a href="sacs.html">Sacs</a>
-    <a href="accessoires.html" class="active">Accessoires</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <nav>
+        <a href="index.html" class="nav-btn">Accueil</a>
+        <a href="raquettes.html" class="nav-btn">Raquettes</a>
+        <a href="chaussures.html" class="nav-btn">Chaussures</a>
+        <a href="volants.html" class="nav-btn">Volants</a>
+        <a href="cordages.html" class="nav-btn">Cordages</a>
+        <a href="vetements.html" class="nav-btn">Vêtements</a>
+        <a href="sacs.html" class="nav-btn">Sacs</a>
+        <a href="accesoires.html" class="nav-btn">Accessoires</a>
+        <a href="contact.html" class="nav-btn">Contact & Magasin</a>
+    </nav>
 
-  <main class="container">
-    <h2>Nos Accessoires de Badminton</h2>
+    <div class="container">
+        <div class="coming-soon-card">
+            <span class="icon-badge">🏸</span>
+            <h2>Mise en ligne prochaine</h2>
+            <p>Les articles et fiches techniques de cette rubrique sont actuellement en cours de préparation et seront disponibles très prochainement sur notre catalogue en ligne.</p>
+            
+            <div class="btn-group">
+                <a href="index.html" class="btn-primary">Retour à l'accueil</a>
+                <a href="contact.html" class="btn-secondary">Nous contacter</a>
+            </div>
 
-    <section class="product-grid">
-      
-      <!-- Produit 1 -->
-      <article class="product-card">
-        <img src="photo/accessoires/surgrips.jpg" alt="Surgrips Yonex Super Grap">
-        <h3>Surgrips Yonex Super Grap (Pack de 3)</h3>
-        <p class="description">Offre une prise en main optimale, une excellente absorption de la transpiration et un grand confort.</p>
-        <p class="price">7,50 €</p>
-        <button class="buy-btn">Voir le produit</button>
-      </article>
+            <div class="store-quick-info">
+                <p>Besoin d'un renseignement immédiat ou d'un produit en particulier ?</p>
+                <p>Contactez notre magasin au <a href="tel:0696891983">06 96 89 19 83</a> ou visitez <a href="https://lardesportsmartinique.fr" target="_blank" rel="noopener">lardesportsmartinique.fr</a></p>
+            </div>
+        </div>
+    </div>
 
-      <!-- Produit 2 -->
-      <article class="product-card">
-        <img src="photo/accessoires/poignet-eponges.jpg" alt="Poignets Éponges">
-        <h3>Poignets Éponges Yonex</h3>
-        <p class="description">Accessoire indispensable pour absorber la transpiration pendant le match et garder la main sèche.</p>
-        <p class="price">5,90 €</p>
-        <button class="buy-btn">Voir le produit</button>
-      </article>
-
-      <!-- Produit 3 -->
-      <article class="product-card">
-        <img src="photo/accessoires/gourde.jpg" alt="Gourde de Sport">
-        <h3>Gourde de Sport 750ml</h3>
-        <p class="description">Gourde ergonomique et légère pour une hydratation facile tout au long de vos entraînements.</p>
-        <p class="price">9,90 €</p>
-        <button class="buy-btn">Voir le produit</button>
-      </article>
-
-    </section>
-  </main>
-
-  <footer>
-    <p>Lardesports Martinique - Centre Commercial Patio de Cluny, 97233 Schoelcher</p>
-    <p>Téléphone : 06 96 89 19 83 | Email : magasinmartinique@lardesports.com</p>
-  </footer>
+    <footer>
+        <p>&copy; 2026 Lardesports Martinique — Le Spécialiste Badminton en Martinique | <a href="https://lardesportsmartinique.fr" target="_blank" rel="noopener">lardesportsmartinique.fr</a></p>
+    </footer>
 
 </body>
 </html>
