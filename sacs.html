@@ -1,244 +1,366 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produits bientôt disponibles — Lardesports Martinique</title>
-    <style>
-        :root {
-            --primary-color: #0f172a;
-            --accent-color: #0284c7;
-            --badge-color: #e0f2fe;
-            --light-bg: #f8fafc;
-            --dark-text: #1f2937;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacs de Badminton & Tennis - Lardesports Martinique</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    body {
+      background-color: #f4f4f9;
+      color: #333;
+    }
 
-        body {
-            background-color: var(--light-bg);
-            color: var(--dark-text);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    header {
+      background-color: #1b2a4a;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
 
-        /* En-tête */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2.5rem 1rem;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
+    nav {
+      background-color: #0f172a;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
 
-        header p {
-            font-size: 1.1rem;
-            color: #94a3b8;
-        }
+    nav a:hover, nav a.active {
+      background-color: #2563eb;
+    }
 
-        /* Navigation */
-        nav {
-            background-color: white;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
 
-        .nav-btn {
-            background-color: #e2e8f0;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #475569;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #1b2a4a;
+      text-align: center;
+    }
 
-        .nav-btn:hover, .nav-btn.active {
-            background-color: var(--accent-color);
-            color: white;
-        }
+    /* Styles de la barre d'action / filtres */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
 
-        /* Conteneur principal */
-        .container {
-            max-width: 800px;
-            margin: 3rem auto;
-            padding: 0 1rem;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .filter-btn {
+      background-color: #e2e8f0;
+      color: #1b2a4a;
+      border: 1px solid #cbd5e1;
+      padding: 10px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
 
-        /* Carte d'annonce d'attente */
-        .coming-soon-card {
-            background: white;
-            border-radius: 12px;
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: var(--card-shadow);
-            border-top: 6px solid var(--accent-color);
-            width: 100%;
-        }
+    .filter-btn:hover {
+      background-color: #cbd5e1;
+    }
 
-        .icon-badge {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
+    .filter-btn.active {
+      background-color: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+    }
 
-        .coming-soon-card h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-        .coming-soon-card p {
-            font-size: 1.1rem;
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+      text-align: center;
+    }
 
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
+    .product-card img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
 
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s ease;
-        }
+    .product-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #111827;
+    }
 
-        .btn-primary:hover {
-            background-color: #0369a1;
-        }
+    .product-card p.description {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
 
-        .btn-secondary {
-            background-color: #e2e8f0;
-            color: var(--primary-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s ease;
-        }
+    .product-card p.price {
+      font-size: 1.15rem;
+      color: #2563eb;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
 
-        .btn-secondary:hover {
-            background-color: #cbd5e1;
-        }
+    .buy-btn {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+      width: 100%;
+    }
 
-        /* Infos magasin en encadré */
-        .store-quick-info {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e2e8f0;
-            font-size: 0.95rem;
-            color: #475569;
-        }
+    .buy-btn:hover {
+      background-color: #1d4ed8;
+    }
 
-        .store-quick-info a {
-            color: var(--accent-color);
-            font-weight: 600;
-            text-decoration: none;
-        }
+    /* Modale d'agrandissement d'image */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+    }
 
-        .store-quick-info a:hover {
-            text-decoration: underline;
-        }
+    .modal-content {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+      object-fit: contain;
+    }
 
-        /* Pied de page */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
-            font-size: 0.9rem;
-        }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-        footer a {
-            color: var(--badge-color);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    footer {
+      background-color: #1b2a4a;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Lardesports Martinique</h1>
-        <p>Votre spécialiste 100% Badminton en Martinique — Raquettes, Volants, Cordages & Équipements</p>
-    </header>
+  <header>
+    <h1>Lardesports Martinique</h1>
+    <p>Votre spécialiste badminton à Schoelcher</p>
+  </header>
 
-    <nav>
-        <a href="index.html" class="nav-btn">Accueil</a>
-        <a href="raquettes.html" class="nav-btn">Raquettes</a>
-        <a href="chaussures.html" class="nav-btn">Chaussures</a>
-        <a href="volants.html" class="nav-btn">Volants</a>
-        <a href="cordages.html" class="nav-btn">Cordages</a>
-        <a href="vetements.html" class="nav-btn">Vêtements</a>
-        <a href="sacs.html" class="nav-btn">Sacs</a>
-        <a href="accesoires.html" class="nav-btn">Accessoires</a>
-        <a href="contact.html" class="nav-btn">Contact & Magasin</a>
-    </nav>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="raquettes.html">Raquettes</a>
+    <a href="volants.html">Volants</a>
+    <a href="chaussures.html">Chaussures</a>
+    <a href="vetements.html">Vêtements</a>
+    <a href="sacs.html" class="active">Sacs</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-    <div class="container">
-        <div class="coming-soon-card">
-            <span class="icon-badge">🏸</span>
-            <h2>Mise en ligne prochaine</h2>
-            <p>Les articles et fiches techniques de cette rubrique sont actuellement en cours de préparation et seront disponibles très prochainement sur notre catalogue en ligne.</p>
-            
-            <div class="btn-group">
-                <a href="index.html" class="btn-primary">Retour à l'accueil</a>
-                <a href="contact.html" class="btn-secondary">Nous contacter</a>
-            </div>
+  <main class="container">
+    <h2>Nos Sacs de Badminton & Tennis</h2>
 
-            <div class="store-quick-info">
-                <p>Besoin d'un renseignement immédiat ou d'un produit en particulier ?</p>
-                <p>Contactez notre magasin au <a href="tel:0696891983">06 96 89 19 83</a> ou visitez <a href="https://lardesportsmartinique.fr" target="_blank" rel="noopener">lardesportsmartinique.fr</a></p>
-            </div>
-        </div>
+    <!-- Barre d'action / Filtres -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts('all', event)">Toutes les marques</button>
+      <button class="filter-btn" onclick="filterProducts('babolat', event)">Babolat</button>
+      <button class="filter-btn" onclick="filterProducts('lining', event)">Li-Ning</button>
+      <button class="filter-btn" onclick="filterProducts('victor', event)">Victor</button>
+      <button class="filter-btn" onclick="filterProducts('yonex', event)">Yonex</button>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Lardesports Martinique — Le Spécialiste Badminton en Martinique | <a href="https://lardesportsmartinique.fr" target="_blank" rel="noopener">lardesportsmartinique.fr</a></p>
-    </footer>
+    <section class="product-grid">
+
+      <!-- BABOLAT -->
+      <article class="product-card" data-category="babolat">
+        <img class="product-img" src="photo/sacs/SAC A DOS BABOLAT BACKRACK 3.JPEG" alt="SAC A DOS BABOLAT BACKRACK 3">
+        <h3>SAC À DOS BABOLAT BACKRACK 3</h3>
+        <p class="description">Sac à dos ergonomique conçu pour transporter vos raquettes et équipements.</p>
+        <p class="price">60,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="babolat">
+        <img class="product-img" src="photo/sacs/SAC DE TENNIS BABOLAT COURT L.JPEG" alt="SAC DE TENNIS BABOLAT COURT L">
+        <h3>SAC BABOLAT COURT L</h3>
+        <p class="description">Grand sac de sport adapté au tennis et badminton avec grands compartiments.</p>
+        <p class="price">89,95 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <!-- LI-NING -->
+      <article class="product-card" data-category="lining">
+        <img class="product-img" src="photo/sacs/SAC A DOS LI-NING LONG ABSS079-3.JPEG" alt="SAC A DOS LI-NING LONG ABSS079-3">
+        <h3>SAC À DOS LI-NING LONG ABSS079-3</h3>
+        <p class="description">Sac vertical spacieux avec compartiments organisés et design moderne.</p>
+        <p class="price">59,90 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <!-- VICTOR -->
+      <article class="product-card" data-category="victor">
+        <img class="product-img" src="photo/sacs/SAC A DOS VICTOR BR7007 AB.JPEG" alt="SAC A DOS VICTOR BR7007 AB">
+        <h3>SAC À DOS VICTOR BR7007 AB (PRO SERIES)</h3>
+        <p class="description">Sac à dos Pro Series bleu et blanc avec compartiment raquettes dédié.</p>
+        <p class="price">99,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="victor">
+        <img class="product-img" src="photo/sacs/THERMOBAG VICTOR BR5639VBC AF.JPEG" alt="THERMOBAG VICTOR BR5639VBC AF">
+        <h3>THERMOBAG VICTOR BR5639VBC AF</h3>
+        <p class="description">Thermobag de style vintage bleu et blanc offrant une excellente protection.</p>
+        <p class="price">99,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="victor">
+        <img class="product-img" src="photo/sacs/THERMOBAG VICTOR MULTI.JPEG" alt="THERMOBAG VICTOR MULTI">
+        <h3>THERMOBAG VICTOR MULTI</h3>
+        <p class="description">Thermobag multi-compartiments bleu/noir pour joueurs réguliers.</p>
+        <p class="price">69,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <!-- YONEX -->
+      <article class="product-card" data-category="yonex">
+        <img class="product-img" src="photo/sacs/SAC A DOS YONEX 42512EX.JPEG" alt="SAC A DOS YONEX 42512EX">
+        <h3>SAC À DOS YONEX 42512EX</h3>
+        <p class="description">Sac à dos compact et léger rouge et bordeaux avec rangement zippé.</p>
+        <p class="price">65,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="yonex">
+        <img class="product-img" src="photo/sacs/SAC A DOS YONEX CLUB 52512.JPEG" alt="SAC A DOS YONEX CLUB 52512">
+        <h3>SAC À DOS YONEX CLUB 52512</h3>
+        <p class="description">Sac à dos rectangulaire élégant noir/gris avec bretelles rembourrées.</p>
+        <p class="price">70,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="yonex">
+        <img class="product-img" src="photo/sacs/SAC YONEX 42523EX.JPEG" alt="SAC YONEX 42523EX">
+        <h3>SAC YONEX 42523EX</h3>
+        <p class="description">Sac de sport compact et léger bleu avec compartiment principal et poche zippée.</p>
+        <p class="price">60,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="yonex">
+        <img class="product-img" src="photo/sacs/SAC YONEX PRO TOURNAMENT 92431W.JPEG" alt="SAC YONEX PRO TOURNAMENT 92431W">
+        <h3>SAC YONEX PRO TOURNAMENT 92431W</h3>
+        <p class="description">Sac de tournoi haut de gamme turquoise avec plusieurs grands rangements.</p>
+        <p class="price">110,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Modale d'affichage d'image en grand -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImg" src="" alt="Image agrandie">
+  </div>
+
+  <footer>
+    <p>Lardesports Martinique - Centre Commercial Patio de Cluny, 97233 Schoelcher</p>
+    <p>Téléphone : 06 96 89 19 83 | Email : magasinmartinique@lardesports.com</p>
+  </footer>
+
+  <script>
+    function filterProducts(category, event) {
+      const cards = document.querySelectorAll('.product-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      // Mise à jour du bouton actif
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (event && event.target) {
+        event.target.classList.add('active');
+      }
+
+      // Filtrage des produits par catégorie
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    /* Fonctions pour afficher/masquer la modale de l'image */
+    function openModalFromCard(btn) {
+      const card = btn.closest('.product-card');
+      const img = card.querySelector('.product-img');
+      if (img) {
+        openModal(img.src);
+      }
+    }
+
+    function openModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      modal.style.display = 'flex';
+      modalImg.src = imageSrc;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
