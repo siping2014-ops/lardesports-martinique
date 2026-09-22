@@ -3,7 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lardesports Martinique - Spécialiste 100% Badminton</title>
+    <title>Lardesports Martinique - Spécialiste 100% Badminton à Schœlcher</title>
+    
+    <!-- Meta SEO de base -->
+    <meta name="description" content="Lardesports Martinique au Centre Commercial Patio de Cluny à Schœlcher. Boutique spécialisée 100% badminton : raquettes, chaussures, volants, cordages, vêtements, sacs et service de recordage express.">
+    <meta name="keywords" content="badminton martinique, lardesports schoelcher, raquette badminton yonex, cordage badminton, magasin sport martinique, volants badminton">
+    <meta name="robots" content="index, follow">
+
+    <!-- Balises Open Graph pour les réseaux sociaux et partages -->
+    <meta property="og:title" content="Lardesports Martinique - Spécialiste 100% Badminton">
+    <meta property="og:description" content="Votre boutique de badminton en Martinique : équipements, raquettes, chaussures et recordage express à Schœlcher.">
+    <meta property="og:image" content="photo/logo.jpeg">
+    <meta property="og:type" content="website">
+
+    <!-- Données structurées Schema.org pour le SEO Local Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportingGoodsStore",
+      "name": "Lardesports Martinique",
+      "image": "photo/logo.jpeg",
+      "telephone": "0696891983",
+      "email": "magasinmartinique@lardesports.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Centre Commercial Patio de Cluny",
+        "addressLocality": "Schoelcher",
+        "postalCode": "97233",
+        "addressCountry": "MQ"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "13:30",
+          "closes": "18:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "10:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "10:00",
+          "closes": "13:00"
+        }
+      ]
+    }
+    </script>
+
     <style>
         :root {
             --primary-color: #0f172a;
@@ -177,12 +228,6 @@
             flex-grow: 1;
         }
 
-        .product-price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
         .btn-detail {
             display: inline-block;
             margin-top: 0.75rem;
@@ -258,173 +303,177 @@
 <body>
 
     <header>
-        <img src="photo/logo.jpeg" alt="Lardesports Martinique" class="logo-header">
+        <img src="photo/logo.jpeg" alt="Logo Lardesports Martinique - Magasin de badminton à Schœlcher" class="logo-header">
         <p>Votre spécialiste 100% Badminton en Martinique — Raquettes, Volants, Cordages & Équipements</p>
     </header>
 
     <nav>
-        <button class="filter-btn active" onclick="filterProducts('all')">Tout l'univers Badminton</button>
-        <button class="filter-btn" onclick="filterProducts('raquettes')">Raquettes</button>
-        <button class="filter-btn" onclick="filterProducts('chaussures')">Chaussures</button>
-        <button class="filter-btn" onclick="filterProducts('volants')">Volants</button>
-	<button class="filter-btn" onclick="filterProducts('cordes')">Cordages</button>
-	<button class="filter-btn" onclick="filterProducts('vetements')">Vêtements</button>
-        <button class="filter-btn" onclick="filterProducts('sacs')">Sacs</button>
-        <button class="filter-btn" onclick="filterProducts('cordages')">Accesoires</button>
-        <button class="filter-btn" onclick="filterProducts('textile')">Autres Sports</button>
+        <button class="filter-btn active" onclick="filterProducts('all', event)">Tout l'univers Badminton</button>
+        <button class="filter-btn" onclick="filterProducts('raquettes', event)">Raquettes</button>
+        <button class="filter-btn" onclick="filterProducts('chaussures', event)">Chaussures</button>
+        <button class="filter-btn" onclick="filterProducts('volants', event)">Volants</button>
+        <button class="filter-btn" onclick="filterProducts('cordes', event)">Cordages</button>
+        <button class="filter-btn" onclick="filterProducts('vetements', event)">Vêtements</button>
+        <button class="filter-btn" onclick="filterProducts('sacs', event)">Sacs</button>
+        <button class="filter-btn" onclick="filterProducts('accessoires', event)">Accessoires</button>
+        <button class="filter-btn" onclick="filterProducts('textile', event)">Autres Sports</button>
     </nav>
 
-    <div class="container">
-        <h2 class="section-title">Catalogue Produits Badminton</h2>
+    <main class="container">
+        <h1 class="section-title">Catalogue Produits Badminton en Martinique</h1>
 
         <div class="product-grid" id="productGrid">
             
             <div class="product-card" data-category="raquettes">
-                <a href="raquettes.html" class="img-link" title="Voir les raquettes par marque">
-                    <img src="photo/raquettes.jpeg" alt="Gamme Raquettes Badminton" class="product-img">
+                <a href="raquettes.html" class="img-link" title="Voir les raquettes de badminton par marque">
+                    <img src="photo/raquettes.jpeg" alt="Gamme de raquettes de badminton Yonex, Babolat, Victor en Martinique" class="product-img">
                 </a>
                 <div class="product-info">
                     <span class="product-category">Raquettes</span>
-                    <h3 class="product-title">
+                    <h2 class="product-title">
                         <a href="raquettes.html">Gamme Raquettes par Marque</a>
-                    </h3>
+                    </h2>
                     <p class="product-description">Découvrez notre sélection complète par marque : Yonex, Babolat, Victor, Maxbolt, Li-ning, RSL...</p>
                     <a href="raquettes.html" class="btn-detail">Voir les marques →</a>
                 </div>
             </div>
 
             <div class="product-card" data-category="chaussures">
-                <a href="chaussures.html" class="img-link" title="Voir les chaussures par marque">
-                <img src="photo/chaussures.jpeg" alt="Raquette badminton polyvalente" class="product-img">
+                <a href="chaussures.html" class="img-link" title="Voir les chaussures de badminton par marque">
+                    <img src="photo/chaussures.jpeg" alt="Chaussures de badminton indoor toutes marques en Martinique" class="product-img">
+                </a>
                 <div class="product-info">
                     <span class="product-category">Chaussures</span>
-                    <h3 class="product-title">
+                    <h2 class="product-title">
                         <a href="chaussures.html">Chaussures spéciales pour badminton</a>
-                    </h3>
+                    </h2>
                     <p class="product-description">Découvrez notre sélection complète par marque : Yonex, Babolat, Victor, Forza, Asics...</p>
                     <a href="chaussures.html" class="btn-detail">Voir les marques →</a>
                 </div>
             </div>
 
             <div class="product-card" data-category="volants">
- 		<a href="volants.html" class="img-link" title="Voir les volants par marque">
-                <img src="photo/volants.jpeg" alt="Volants de badminton plumes" class="product-img">
+                <a href="volants.html" class="img-link" title="Voir les volants de badminton par marque">
+                    <img src="photo/volants.jpeg" alt="Volants de badminton en plumes et plastique" class="product-img">
+                </a>
                 <div class="product-info">
                     <span class="product-category">Volants</span>
-                    <h3 class="product-title">
-			 <a href="volants.html">Tube Volants Plumes Compétition (x12)</a>
-                    </h3>
-                    <p class="product-description">Maniabilité extrême et tige flexible, idéale pour le jeu rapide en double et la défense.</p>
+                    <h2 class="product-title">
+                        <a href="volants.html">Volants Plumes & Plastique Compétition</a>
+                    </h2>
+                    <p class="product-description">Grand choix de volants pour entraînement et compétition en club.</p>
                     <a href="volants.html" class="btn-detail">Voir les marques →</a>
                 </div>
-
             </div>
 
             <div class="product-card" data-category="cordes">
-		<a href="cordages.html" class="img-link" title="Voir les cordages par marque">
-                <img src="photo/cordes.jpeg" alt="Volants plastique badminton" class="product-img">
+                <a href="cordages.html" class="img-link" title="Voir les cordages de badminton par marque">
+                    <img src="photo/cordes.jpeg" alt="Garnitures et bobines de cordage badminton Yonex" class="product-img">
+                </a>
                 <div class="product-info">
-                    <span class="product-category">cordages</span>
-                    <h3 class="product-title">
-			<a href="volants.html">Différentes marques de cordages</a>
-		 </h3>
-                    <p class="product-description">Grande résistance à l'usure, idéal pour entraînements et clubs.</p>
-		 <a href="cordages.html" class="btn-detail">Voir les marques →</a>
-
+                    <span class="product-category">Cordages</span>
+                    <h2 class="product-title">
+                        <a href="cordages.html">Différentes marques de cordages</a>
+                    </h2>
+                    <p class="product-description">Cordages jauges fines et haute durabilité pour toutes sensations de jeu.</p>
+                    <a href="cordages.html" class="btn-detail">Voir les marques →</a>
                 </div>
             </div>
 
             <div class="product-card" data-category="vetements">
-		<a href="vetements.html" class="img-link" title="Voir les vêtements par marque">
-                <img src="photo/vetements.jpeg" alt="Chaussures Badminton Indoor" class="product-img">
+                <a href="vetements.html" class="img-link" title="Voir les vêtements de badminton par marque">
+                    <img src="photo/vetements.jpeg" alt="Textiles et tenues de badminton hommes et femmes" class="product-img">
+                </a>
                 <div class="product-info">
-                    <span class="product-category">Vêtement de différentes marques</span>
-                    <h3 class="product-title">
-			<a href="vetements.html">Nombreux marques et tailles différentes</a>
-		</h3>
+                    <span class="product-category">Vêtements</span>
+                    <h2 class="product-title">
+                        <a href="vetements.html">Nombreuses marques et tailles disponibles</a>
+                    </h2>
                     <p class="product-description">Découvrez notre sélection complète par marque : Yonex, Victor, Forza, Felet...</p>
- 		<a href="vetements.html" class="btn-detail">Voir les marques →</a>
-
+                    <a href="vetements.html" class="btn-detail">Voir les marques →</a>
                 </div>
             </div>
 
             <div class="product-card" data-category="sacs">
-		<a href="sacs.html" class="img-link" title="Voir les sacs par marque">
-                <img src="photo/sacs.jpeg" alt="Thermobag Badminton" class="product-img">
+                <a href="sacs.html" class="img-link" title="Voir les sacs de badminton par marque">
+                    <img src="photo/sacs.jpeg" alt="Thermobags et sacs à dos de badminton" class="product-img">
+                </a>
                 <div class="product-info">
                     <span class="product-category">Sacs & Thermobags</span>
-                    <h3 class="product-title">
-			<a href="sacs.html">Thermobag 6 à 9 Raquettes</a>
-		</h3>
-                    <p class="product-description">Compartiment isotherme pour préserver la tension du cordage et poche chaussures séparée: Yonex, Victor, Babolat, Wilson...</p>
-		<a href="sacs.html" class="btn-detail">Voir les marques →</a>
+                    <h2 class="product-title">
+                        <a href="sacs.html">Sacs de 6 à 9 Raquettes & Sacs à dos</a>
+                    </h2>
+                    <p class="product-description">Compartiments isothermes et poches séparées pour chaussures : Yonex, Victor, Babolat...</p>
+                    <a href="sacs.html" class="btn-detail">Voir les marques →</a>
                 </div>
             </div>
 
-            <div class="product-card" data-category="cordages">
-		<a href="accesoires.html" class="img-link" title="Voir les différents accesoirs proposés">
-                <img src="photo/accesoires.jpeg" alt="Grips et Surgrips Badminton" class="product-img">
+            <div class="product-card" data-category="accessoires">
+                <a href="accesoires.html" class="img-link" title="Voir les accessoires de badminton">
+                    <img src="photo/accesoires.jpeg" alt="Grips, surgrips et accessoires de badminton" class="product-img">
+                </a>
                 <div class="product-info">
-                    <span class="product-category">accesoires</span>
-                    <h3 class="product-title">
-			<a href="accesoires.html">Pack Surgrips Absorbants (x3)</a>
-		</h3>
-                    <p class="product-description">Toucher collant et très forte absorption de la transpiration pour un maintien parfait.</p>
-		<a href="accesoires.html" class="btn-detail">Voir les marques →</a>
-
+                    <span class="product-category">Accessoires</span>
+                    <h2 class="product-title">
+                        <a href="accesoires.html">Grips, Surgrips & Accessoires</a>
+                    </h2>
+                    <p class="product-description">Surgrips absorbants, grips de remplacement, gourdes et petits matériels.</p>
+                    <a href="accesoires.html" class="btn-detail">Voir les marques →</a>
                 </div>
             </div>
 
             <div class="product-card" data-category="textile">
-		<a href="autres-sports.html" class="img-link" title="Voir les différents équipements sportifs">
-                <img src="photo/autressports.JPEG" alt="Autres sports" class="product-img">
+                <a href="autres-sports.html" class="img-link" title="Voir les autres équipements sportifs">
+                    <img src="photo/autressports.JPEG" alt="Équipements et textiles pour autres sports de raquette" class="product-img">
+                </a>
                 <div class="product-info">
                     <span class="product-category">Autres sports</span>
-                    <h3 class="product-title">
-			<a href="autres-sports.html">Autres sports</a>
-		</h3>
-                    <p class="product-description">Tissu léger à séchage rapide, coupe ergonomique adaptée à la pratique du badminton.</p>
-		<a href="autres-sports.html" class="btn-detail">Voir les marques →</a>
-
+                    <h2 class="product-title">
+                        <a href="autres-sports.html">Autres sports de raquette</a>
+                    </h2>
+                    <p class="product-description">Matériel et tenues respirantes adaptées aux sports indoor et outdoor.</p>
+                    <a href="autres-sports.html" class="btn-detail">Voir les marques →</a>
                 </div>
             </div>
 
         </div>
 
-        <div class="service-banner">
-            <h3>🏸 Service Pose & Recordage Express en Magasin</h3>
-            <p>Confiez-nous vos raquettes ! Nous réalisons le recordage sur mesure selon la tension de votre choix (Jauge fine / forte durabilité).</p>
-        </div>
+        <section class="service-banner">
+            <h2>🏸 Service Pose & Recordage Express en Magasin</h2>
+            <p>Confiez-nous vos raquettes ! Nous réalisons le recordage sur mesure selon la tension de votre choix (jauge fine pour toucher / forte durabilité).</p>
+        </section>
 
-        <div class="store-info">
+        <section class="store-info">
             <div class="info-block">
-                <h3>📍 Contact & Boutique</h3>
+                <h2>📍 Contact & Boutique</h2>
                 <p><strong>Magasin :</strong> Lardesports Martinique</p>
-                <p><strong>Adresse :</strong> Centre Commercial Patio de Cluny, 97233 Schoelcher</p>
+                <p><strong>Adresse :</strong> Centre Commercial Patio de Cluny, 97233 Schœlcher</p>
                 <p><strong>Téléphone :</strong> <a href="tel:0696891983">06 96 89 19 83</a></p>
                 <p><strong>Email :</strong> <a href="mailto:magasinmartinique@lardesports.com">magasinmartinique@lardesports.com</a></p>
             </div>
             <div class="info-block">
-                <h3>🕒 Horaires d'Ouverture</h3>
+                <h2>🕒 Horaires d'Ouverture</h2>
                 <p><strong>Mardi - Vendredi :</strong> 13h30 - 18h30</p>
                 <p><strong>Samedi :</strong> 10h00 - 18h00</p>
                 <p><strong>Dimanche :</strong> 10h00 - 13h00</p>
                 <p><strong>Lundi :</strong> Fermé</p>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Lardesports Martinique — Le Spécialiste Badminton en Martinique</p>
+        <p>&copy; 2026 Lardesports Martinique — Le Spécialiste Badminton à Schœlcher, Martinique</p>
     </footer>
 
     <script>
-        function filterProducts(category) {
+        function filterProducts(category, event) {
             const cards = document.querySelectorAll('.product-card');
             const buttons = document.querySelectorAll('.filter-btn');
 
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event && event.target) {
+                event.target.classList.add('active');
+            }
 
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
