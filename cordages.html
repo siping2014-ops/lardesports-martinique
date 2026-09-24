@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produits bientôt disponibles — Lardesports Martinique</title>
+    <title>Cordages par Marque - Lardesports Martinique</title>
     <style>
         :root {
             --primary-color: #0f172a;
@@ -25,9 +25,6 @@
             background-color: var(--light-bg);
             color: var(--dark-text);
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         /* En-tête */
@@ -40,143 +37,232 @@
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
         }
 
         header p {
-            font-size: 1.1rem;
             color: #94a3b8;
+            font-size: 1.05rem;
         }
 
-        /* Navigation */
-        nav {
+        .back-nav {
             background-color: white;
-            padding: 1rem;
+            padding: 0.8rem 1rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
+        }
+
+        .back-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Barre d'onglets */
+        .tabs-nav {
+            background-color: white;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .nav-btn {
-            background-color: #e2e8f0;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #475569;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .nav-btn:hover, .nav-btn.active {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        /* Conteneur principal */
-        .container {
-            max-width: 800px;
-            margin: 3rem auto;
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
             padding: 0 1rem;
-            flex: 1;
+        }
+
+        .tab-btn {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* Conteneur */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 3rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Section Marque */
+        .brand-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            display: none; /* Masqué par défaut */
+        }
+
+        .brand-section.active {
+            display: block; /* Affiché quand l'onglet est actif */
+        }
+
+        .brand-header {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* Carte d'annonce d'attente */
-        .coming-soon-card {
-            background: white;
-            border-radius: 12px;
-            padding: 3rem 2rem;
+        .brand-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .brand-badge {
+            background-color: var(--badge-color);
+            color: var(--accent-color);
+            font-weight: bold;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Grille en 3 colonnes */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        .card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
             text-align: center;
-            box-shadow: var(--card-shadow);
-            border-top: 6px solid var(--accent-color);
+            background: #fff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            background-color: #f1f5f9;
+        }
+
+        .card h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.4rem;
+        }
+
+        .card .specs {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0.8rem;
+        }
+
+        .card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .buy-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.2s;
             width: 100%;
         }
 
-        .icon-badge {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .coming-soon-card h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .coming-soon-card p {
-            font-size: 1.1rem;
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s ease;
-        }
-
-        .btn-primary:hover {
+        .buy-btn:hover {
             background-color: #0369a1;
         }
 
-        .btn-secondary {
-            background-color: #e2e8f0;
-            color: var(--primary-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s ease;
+        /* Modale d'agrandissement d'image */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
         }
 
-        .btn-secondary:hover {
-            background-color: #cbd5e1;
+        .modal-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            object-fit: contain;
         }
 
-        /* Infos magasin en encadré */
-        .store-quick-info {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e2e8f0;
-            font-size: 0.95rem;
-            color: #475569;
-        }
-
-        .store-quick-info a {
-            color: var(--accent-color);
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .store-quick-info a:hover {
-            text-decoration: underline;
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         /* Pied de page */
@@ -185,60 +271,276 @@
             color: white;
             text-align: center;
             padding: 1.5rem;
-            margin-top: 3rem;
             font-size: 0.9rem;
-        }
-
-        footer a {
-            color: var(--badge-color);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Lardesports Martinique</h1>
-        <p>Votre spécialiste 100% Badminton en Martinique — Raquettes, Volants, Cordages & Équipements</p>
+        <h1>Nos Cordages par Marque</h1>
+        <p>Lardesports Martinique — Centre Commercial Patio de Cluny, 97233 Schoelcher</p>
     </header>
 
-    <nav>
-        <a href="index.html" class="nav-btn">Accueil</a>
-        <a href="raquettes.html" class="nav-btn">Raquettes</a>
-        <a href="chaussures.html" class="nav-btn">Chaussures</a>
-        <a href="volants.html" class="nav-btn">Volants</a>
-        <a href="cordages.html" class="nav-btn">Cordages</a>
-        <a href="vetements.html" class="nav-btn">Vêtements</a>
-        <a href="sacs.html" class="nav-btn">Sacs</a>
-        <a href="accesoires.html" class="nav-btn">Accessoires</a>
-        <a href="contact.html" class="nav-btn">Contact & Magasin</a>
-    </nav>
-
-    <div class="container">
-        <div class="coming-soon-card">
-            <span class="icon-badge">🏸</span>
-            <h2>Mise en ligne prochaine</h2>
-            <p>Les articles et fiches techniques de cette rubrique sont actuellement en cours de préparation et seront disponibles très prochainement sur notre catalogue en ligne.</p>
-            
-            <div class="btn-group">
-                <a href="index.html" class="btn-primary">Retour à l'accueil</a>
-                <a href="contact.html" class="btn-secondary">Nous contacter</a>
-            </div>
-
-            <div class="store-quick-info">
-                <p>Besoin d'un renseignement immédiat ou d'un produit en particulier ?</p>
-                <p>Contactez notre magasin au <a href="tel:0696891983">06 96 89 19 83</a> ou visitez <a href="https://lardesportsmartinique.fr" target="_blank" rel="noopener">lardesportsmartinique.fr</a></p>
-            </div>
+    <div class="back-nav">
+        <div class="back-container">
+            <a href="index.html" class="back-link">← Retour au catalogue principal</a>
         </div>
     </div>
 
+    <!-- Barre d'onglets pour le filtrage -->
+    <nav class="tabs-nav">
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="openBrand('all', this)">Toutes les marques</button>
+            <button class="tab-btn" onclick="openBrand('yonex', this)">Yonex</button>
+            <button class="tab-btn" onclick="openBrand('victor', this)">VICTOR</button>
+            <button class="tab-btn" onclick="openBrand('gosen', this)">Gosen</button>
+            <button class="tab-btn" onclick="openBrand('kawasaki', this)">Kawasaki</button>
+            <button class="tab-btn" onclick="openBrand('lining', this)">Li-Ning</button>
+            <button class="tab-btn" onclick="openBrand('maxbolt', this)">Maxbolt</button>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- YONEX -->
+        <div id="yonex" class="brand-section active">
+            <div class="brand-header">
+                <h2 class="brand-title">Yonex</h2>
+                <span class="brand-badge">Marque Officielle</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/cordages/BOBINE BADMINTON YONEX BG65 (200 METRES)BLANC.JPEG" alt="BOBINE BADMINTON YONEX BG65 (200 METRES) BLANC">
+                    <div>
+                        <h4>BOBINE BADMINTON YONEX BG65 (200 MÈTRES) BLANC</h4>
+                        <p class="specs">Jauge : 0.70 mm — Durabilité supérieure</p>
+                    </div>
+                    <p class="price">195,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/BOBINE BADMINTON YONEX BG65 (200 METRES)BLANC.JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/cordages/BOBINE BADMINTON YONEX BG65 (200 METRES)BLEU.JPEG" alt="BOBINE BADMINTON YONEX BG65 (200 METRES) BLEU">
+                    <div>
+                        <h4>BOBINE BADMINTON YONEX BG65 (200 MÈTRES) BLEU</h4>
+                        <p class="specs">Jauge : 0.70 mm — Durabilité supérieure</p>
+                    </div>
+                    <p class="price">195,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/BOBINE BADMINTON YONEX BG65 (200 METRES)BLEU.JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/cordages/BOBINE BADMINTON YONEX BG65 (200 METRES)JAUNE.JPEG" alt="BOBINE BADMINTON YONEX BG65 (200 METRES) JAUNE">
+                    <div>
+                        <h4>BOBINE BADMINTON YONEX BG65 (200 MÈTRES) JAUNE</h4>
+                        <p class="specs">Jauge : 0.70 mm — Durabilité supérieure</p>
+                    </div>
+                    <p class="price">195,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/BOBINE BADMINTON YONEX BG65 (200 METRES)JAUNE.JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/cordages/BOBINE BADMINTON YONEX BG66 ULTIMAX (200 METRES).JPEG" alt="BOBINE BADMINTON YONEX BG66 ULTIMAX (200 METRES)">
+                    <div>
+                        <h4>BOBINE BADMINTON YONEX BG66 ULTIMAX (200 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.65 mm — Repulsion & Contrôle élevé</p>
+                    </div>
+                    <p class="price">179,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/BOBINE BADMINTON YONEX BG66 ULTIMAX (200 METRES).JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/cordages/BOBINE BADMINTON YONEX BG80 (200 METRES).JPEG" alt="BOBINE BADMINTON YONEX BG80 (200 METRES)">
+                    <div>
+                        <h4>BOBINE BADMINTON YONEX BG80 (200 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.68 mm — Quick Repulsion & Heavy Smash</p>
+                    </div>
+                    <p class="price">189,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/BOBINE BADMINTON YONEX BG80 (200 METRES).JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/cordages/CORDAGE BADMINTON YONEX BG AEROBITE BOOST (10 METRES).JPEG" alt="CORDAGE BADMINTON YONEX BG AEROBITE BOOST">
+                    <div>
+                        <h4>CORDAGE YONEX BG AEROBITE BOOST (10 MÈTRES)</h4>
+                        <p class="specs">Hybride : 0.72 mm / 0.61 mm — Control & Hard Feeling</p>
+                    </div>
+                    <p class="price">13,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/CORDAGE BADMINTON YONEX BG AEROBITE BOOST (10 METRES).JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/cordages/CORDAGE BADMINTON YONEX BG AEROBITE HYBRIDE 0.67 - 0.61 (10 METRES).JPEG" alt="CORDAGE BADMINTON YONEX BG AEROBITE">
+                    <div>
+                        <h4>CORDAGE YONEX BG AEROBITE (10 MÈTRES)</h4>
+                        <p class="specs">Hybride : 0.67 mm / 0.61 mm — Quick Repulsion & Spin</p>
+                    </div>
+                    <p class="price">13,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/CORDAGE BADMINTON YONEX BG AEROBITE HYBRIDE 0.67 - 0.61 (10 METRES).JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/cordages/CORDAGE BADMINTON YONEX NANOGY 95 (10 METRES).JPEG" alt="CORDAGE BADMINTON YONEX NANOGY 95">
+                    <div>
+                        <h4>CORDAGE YONEX NANOGY 95 (10 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.69 mm — Durabilité & Puissance</p>
+                    </div>
+                    <p class="price">9,50 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/CORDAGE BADMINTON YONEX NANOGY 95 (10 METRES).JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- VICTOR -->
+        <div id="victor" class="brand-section active">
+            <div class="brand-header">
+                <h2 class="brand-title">VICTOR</h2>
+                <span class="brand-badge">Marque Officielle</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/cordages/BOBINE BADMINTON VICTOR VBS-66 (200 METRES).JPEG" alt="BOBINE BADMINTON VICTOR VBS-66 (200 METRES)">
+                    <div>
+                        <h4>BOBINE BADMINTON VICTOR VBS-66 NANO (200 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.66 mm — High Resilience / Medium Feeling</p>
+                    </div>
+                    <p class="price">179,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/BOBINE BADMINTON VICTOR VBS-66 (200 METRES).JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/cordages/CORDAGE BADMINTON VICTOR VBS-63 (10 METRES).JPEG" alt="CORDAGE BADMINTON VICTOR VBS-63">
+                    <div>
+                        <h4>CORDAGE VICTOR VBS-63 (10 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.63 mm — High Resilience / Medium Feeling</p>
+                    </div>
+                    <p class="price">11,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/CORDAGE BADMINTON VICTOR VBS-63 (10 METRES).JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/cordages/CORDAGE BADMINTON VICTOR VBS-66 (10 METRES).JPEG" alt="CORDAGE BADMINTON VICTOR VBS-66 NANO">
+                    <div>
+                        <h4>CORDAGE VICTOR VBS-66 NANO (10 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.66 mm — High Resilience / Medium Feeling</p>
+                    </div>
+                    <p class="price">11,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/CORDAGE BADMINTON VICTOR VBS-66 (10 METRES).JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GOSEN -->
+        <div id="gosen" class="brand-section active">
+            <div class="brand-header">
+                <h2 class="brand-title">Gosen</h2>
+                <span class="brand-badge">Marque Officielle</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/cordages/CORDAGE BADMINTON GOSEN RYZONIC 58 (10 METRES).JPEG" alt="CORDAGE BADMINTON GOSEN RYZONIC 58">
+                    <div>
+                        <h4>CORDAGE GOSEN RYZONIC 58 (10 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.58 mm — Son de frappe & Spin élevé</p>
+                    </div>
+                    <p class="price">13,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/CORDAGE BADMINTON GOSEN RYZONIC 58 (10 METRES).JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- KAWASAKI -->
+        <div id="kawasaki" class="brand-section active">
+            <div class="brand-header">
+                <h2 class="brand-title">Kawasaki</h2>
+                <span class="brand-badge">Marque Officielle</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/cordages/CORDAGE BADMINTON KAWASAKI K SB 68 (10 METRES).JPEG" alt="CORDAGE BADMINTON KAWASAKI KSB-68">
+                    <div>
+                        <h4>CORDAGE KAWASAKI KSB-68 (10 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.70 mm — Haute durabilité & Rigidité</p>
+                    </div>
+                    <p class="price">11,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/CORDAGE BADMINTON KAWASAKI K SB 68 (10 METRES).JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LI-NING -->
+        <div id="lining" class="brand-section active">
+            <div class="brand-header">
+                <h2 class="brand-title">Li-Ning</h2>
+                <span class="brand-badge">Marque Officielle</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/cordages/CORDAGE DE BADMINTON LI-NING N1 (10 METRES).JPEG" alt="CORDAGE BADMINTON LI-NING NO.1">
+                    <div>
+                        <h4>CORDAGE LI-NING NO.1 (10 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.65 mm — High Repulsion Power</p>
+                    </div>
+                    <p class="price">13,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/CORDAGE DE BADMINTON LI-NING N1 (10 METRES).JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAXBOLT -->
+        <div id="maxbolt" class="brand-section active">
+            <div class="brand-header">
+                <h2 class="brand-title">Maxbolt</h2>
+                <span class="brand-badge">Marque Officielle</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/cordages/MAXBOLT MBS 20-BADMINTON STRING.JPEG" alt="CORDAGE BADMINTON MAXBOLT MBS 20">
+                    <div>
+                        <h4>CORDAGE MAXBOLT MBS 20 (10 MÈTRES)</h4>
+                        <p class="specs">Jauge : 0.68 mm — High Durability & Long Lasting</p>
+                    </div>
+                    <p class="price">8,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/cordages/MAXBOLT MBS 20-BADMINTON STRING.JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modale d'affichage d'image en grand -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg" src="" alt="Image agrandie">
+    </div>
+
     <footer>
-        <p>&copy; 2026 Lardesports Martinique — Le Spécialiste Badminton en Martinique | <a href="https://lardesportsmartinique.fr" target="_blank" rel="noopener">lardesportsmartinique.fr</a></p>
+        <p>&copy; 2026 Lardesports Martinique — Téléphone : 06 96 89 19 83 — Email : magasinmartinique@lardesports.com</p>
     </footer>
 
+    <script>
+        function openBrand(brandId, element) {
+            // Retirer la classe active de tous les boutons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Ajouter la classe active au bouton cliqué
+            element.classList.add('active');
+
+            // Gérer l'affichage des sections
+            const sections = document.querySelectorAll('.brand-section');
+            sections.forEach(section => {
+                if (brandId === 'all' || section.id === brandId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        }
+
+        /* Fonctions pour afficher/masquer la modale de l'image */
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'flex';
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
