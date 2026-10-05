@@ -56,6 +56,37 @@
       text-align: center;
     }
 
+    /* Style de la bannière promo / étiquette de solde */
+    .promo-banner {
+      background-color: #dc2626;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .promo-banner strong {
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 0.3rem;
+    }
+
+    .promo-banner p {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+
+    .promo-banner span {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: normal;
+      opacity: 0.9;
+    }
+
     /* Styles de la barre d'action / filtres */
     .filter-bar {
       display: flex;
@@ -274,6 +305,13 @@
   <main class="container">
     <h2>Nos T-Shirts & Maillots de Badminton</h2>
 
+    <!-- Bandeau Étiquette Promo Solde -->
+    <div class="promo-banner">
+      <strong>🔥 SOLDE EXCEPTIONNELLE 🔥</strong>
+      <p>1 T-shirt acheté, le 2<sup>ème</sup> à moitié prix !</p>
+      <span>*Voir conditions en magasin</span>
+    </div>
+
     <!-- Barre d'action / Filtres -->
     <div class="filter-bar">
       <button class="filter-btn active" onclick="filterProducts('all', event)">Toutes les marques</button>
@@ -291,7 +329,7 @@
         <p class="sizes">Tailles : S, M, L, XL, XXL, XXXL</p>
         <p class="price">45,00 €</p>
         <div class="color-selection">
-      <button class="color-btn bg-lightgreen selected" title="Vert pastel / Menthe" data-img="photo/vetements/T-SHIRT YONEX UNISEX TOUR ELITE 10728EX.JPEG" onclick="selectColor(this)"></button>
+          <button class="color-btn bg-lightgreen selected" title="Vert pastel / Menthe" data-img="photo/vetements/T-SHIRT YONEX UNISEX TOUR ELITE 10728EX.JPEG" onclick="selectColor(this)"></button>
           <button class="color-btn bg-darkblue" title="Bleu foncé" data-img="photo/vetements/T-SHIRT YONEX UNISEX TOUR ELITE 10728EX 2.JPEG" onclick="selectColor(this)"></button>
           <button class="color-btn bg-black" title="Noir" data-img="photo/vetements/T-SHIRT YONEX UNISEX TOUR ELITE 10728EX 3.JPEG" onclick="selectColor(this)"></button>
         </div>
@@ -312,15 +350,15 @@
 
       <!-- VICTOR (5 T-Shirts) -->
       <article class="product-card" data-category="victor">
-  	<img class="product-img" src="photo/vetements/T-SHIRT VICTOR UNISEX T-60001TD.JPEG" alt="T-Shirt Victor Supreme Red">
-  	<h3>T-SHIRT VICTOR SUPREME COMPETITION RED</h3>
-  	<p class="sizes">Tailles : S, M, L, XL, XXL, XXXL</p>
-  	<p class="price">42,90 €</p>
-  	<div class="color-selection">
-    	<button class="color-btn bg-red-darkblue selected" title="Rouge et Bleu foncé" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-60001TD.JPEG" onclick="selectColor(this)"></button>
-    	<button class="color-btn bg-blue-white-red" title="Bleu Blanc Rouge" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-60001 A.JPEG" onclick="selectColor(this)"></button>
-  	</div>
-  	<button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+        <img class="product-img" src="photo/vetements/T-SHIRT VICTOR UNISEX T-60001TD.JPEG" alt="T-Shirt Victor Supreme Red">
+        <h3>T-SHIRT VICTOR SUPREME COMPETITION RED</h3>
+        <p class="sizes">Tailles : S, M, L, XL, XXL, XXXL</p>
+        <p class="price">42,90 €</p>
+        <div class="color-selection">
+          <button class="color-btn bg-red-darkblue selected" title="Rouge et Bleu foncé" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-60001TD.JPEG" onclick="selectColor(this)"></button>
+          <button class="color-btn bg-blue-white-red" title="Bleu Blanc Rouge" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-60001 A.JPEG" onclick="selectColor(this)"></button>
+        </div>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
       </article>
 
       <article class="product-card" data-category="victor">
@@ -344,16 +382,16 @@
       </article>
 
       <article class="product-card" data-category="victor">
-  	<img class="product-img" src="photo/vetements/T-SHIRT VICTOR UNISEX T-50001TD.JPEG" alt="T-SHIRT VICTOR UNISEX T-50001TD">
-  	<h3>T-SHIRT VICTOR UNISEX T-50001TD</h3>
-  	<p class="sizes">Tailles : XS, S, M, L, XL, XXL, XXXL</p>
-  	<p class="price">44,90 €</p>
-  	<div class="color-selection">
-    	<button class="color-btn bg-white-teal-pink selected" title="Blanc / Vert Canard" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-50001TD.JPEG" onclick="selectColor(this)"></button>
-    	<button class="color-btn bg-teal-red" title="Vert Canard / Rouge" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-50001TD C.JPEG" onclick="selectColor(this)"></button>
-    	<button class="color-btn bg-dark-red" title="Noir / Rouge" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-50001TD B.JPEG" onclick="selectColor(this)"></button>
-  	</div>
-  	<button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+        <img class="product-img" src="photo/vetements/T-SHIRT VICTOR UNISEX T-50001TD.JPEG" alt="T-SHIRT VICTOR UNISEX T-50001TD">
+        <h3>T-SHIRT VICTOR UNISEX T-50001TD</h3>
+        <p class="sizes">Tailles : XS, S, M, L, XL, XXL, XXXL</p>
+        <p class="price">44,90 €</p>
+        <div class="color-selection">
+          <button class="color-btn bg-white-teal-pink selected" title="Blanc / Vert Canard" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-50001TD.JPEG" onclick="selectColor(this)"></button>
+          <button class="color-btn bg-teal-red" title="Vert Canard / Rouge" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-50001TD C.JPEG" onclick="selectColor(this)"></button>
+          <button class="color-btn bg-dark-red" title="Noir / Rouge" data-img="photo/vetements/T-SHIRT VICTOR UNISEX T-50001TD B.JPEG" onclick="selectColor(this)"></button>
+        </div>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
       </article>
 
       <!-- FZ FORZA (5 T-Shirts) -->

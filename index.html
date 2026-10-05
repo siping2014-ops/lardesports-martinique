@@ -186,6 +186,33 @@
             transform: scale(1.05);
         }
 
+        /* Badge / Étiquette Promo Solde */
+        .promo-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #dc2626;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 0.4rem 0.7rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+            z-index: 2;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .promo-badge span {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            text-transform: none;
+            margin-top: 2px;
+            opacity: 0.9;
+        }
+
         .product-info {
             padding: 1.2rem;
             display: flex;
@@ -382,6 +409,10 @@
 
             <div class="product-card" data-category="vetements">
                 <a href="vetements.html" class="img-link" title="Voir les vêtements de badminton par marque">
+                    <div class="promo-badge">
+                        🔥 SOLDE : 1 T-shirt acheté,<br>le 2<sup>ème</sup> à -50%*
+                        <span>*Voir condition en magasin</span>
+                    </div>
                     <img src="photo/vetements.jpeg" alt="Textiles et tenues de badminton hommes et femmes" class="product-img">
                 </a>
                 <div class="product-info">
@@ -454,7 +485,7 @@
             <div class="info-block">
                 <h2>🕒 Horaires d'Ouverture</h2>
                 <p><strong>Mardi - Vendredi :</strong> 13h30 - 18h30</p>
-                <p><strong>Samedi :</strong> 10h00 - 18h00</p>
+                <p><strong>Samedi :</strong> 9h00 - 16h30</p>
                 <p><strong>Dimanche :</strong> 10h00 - 13h00</p>
                 <p><strong>Lundi :</strong> Fermé</p>
             </div>
