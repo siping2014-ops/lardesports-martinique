@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raquettes de Tennis par Marque — Lardesports Martinique</title>
+    <title>Raquettes de Tennis & Padel par Marque — Lardesports Martinique</title>
     <style>
         :root {
             --primary-color: #0f172a;
             --accent-color: #0284c7;
             --badge-color: #e0f2fe;
+            --badge-padel-color: #fef3c7;
+            --badge-padel-text: #b45309;
             --light-bg: #f8fafc;
             --dark-text: #1f2937;
             --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -75,7 +77,7 @@
             text-decoration: underline;
         }
 
-        /* Barre d'onglets */
+        /* Barre d'onglets Sport */
         .tabs-nav {
             background-color: white;
             border-bottom: 2px solid #e2e8f0;
@@ -160,6 +162,11 @@
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.85rem;
+        }
+
+        .brand-badge.padel {
+            background-color: var(--badge-padel-color);
+            color: var(--badge-padel-text);
         }
 
         /* Grille en 3 colonnes */
@@ -269,7 +276,8 @@
             font-size: 0.9em;
             margin-right: 6px;
         }
- 	.discount-tag {
+
+        .discount-tag {
             background-color: #dc2626;
             color: #ffffff;
             font-size: 0.8rem;
@@ -312,7 +320,7 @@
 <body>
 
     <header>
-        <h1>Autres Sports — Raquettes de Tennis</h1>
+        <h1>Autres Sports — Tennis & Padel</h1>
         <p>Lardesports Martinique — Centre Commercial Patio de Cluny, 97233 Schœlcher</p>
     </header>
 
@@ -322,22 +330,160 @@
         </div>
     </div>
 
-    <!-- Barre d'onglets pour le filtrage par marque -->
+    <!-- Barre d'onglets par Sport (Tous / Tennis / Padel) -->
     <nav class="tabs-nav">
         <div class="tabs-container">
-            <button class="tab-btn active" onclick="openBrand('all', this)">Toutes les marques</button>
-            <button class="tab-btn" onclick="openBrand('head', this)">Head</button>
-            <button class="tab-btn" onclick="openBrand('babolat', this)">Babolat</button>
-            <button class="tab-btn" onclick="openBrand('yonex', this)">Yonex</button>
-            <button class="tab-btn" onclick="openBrand('wilson', this)">Wilson</button>
+            <button class="tab-btn active" onclick="filterSport('all', this)">Tous les sports</button>
+            <button class="tab-btn" onclick="filterSport('tennis', this)">Tennis</button>
+            <button class="tab-btn" onclick="filterSport('padel', this)">Padel</button>
         </div>
     </nav>
 
     <div class="container">
-  <!-- WILSON -->
-        <div id="wilson" class="brand-section active">
+
+        <!-- ================= PADEL ================= -->
+        
+        <!-- PADEL - ADIDAS -->
+        <div class="brand-section sport-padel active">
             <div class="brand-header">
-                <h2 class="brand-title">Wilson</h2>
+                <h2 class="brand-title">Adidas — Padel</h2>
+                <span class="brand-badge padel">Padel</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/autres sports/RAQUETTE DE PADEL ADIDAS RX SERIE.JPG" alt="RAQUETTE DE PADEL ADIDAS RX SERIE">
+                    <div>
+                        <h4>RAQUETTE DE PADEL ADIDAS RX SERIES</h4>
+                        <p class="specs">Format Larme / Polyvalente</p>
+                        <div class="description-details">
+                            <strong>Confort de jeu exceptionnel et tolérance idéale pour les joueurs en progression recherchant un contrôle équilibré</strong>
+                        </div>
+                    </div>
+                    <p class="price">119,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE DE PADEL ADIDAS RX SERIE.JPG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PADEL - BABOLAT -->
+        <div class="brand-section sport-padel active">
+            <div class="brand-header">
+                <h2 class="brand-title">Babolat — Padel</h2>
+                <span class="brand-badge padel">Padel</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/autres sports/RAQUETTE DE PADEL BABOLAT AIR VERTUO.JPEG" alt="RAQUETTE DE PADEL BABOLAT AIR VERTUO">
+                    <div>
+                        <h4>RAQUETTE DE PADEL BABOLAT AIR VERTUO</h4>
+                        <p class="specs">Format Hybride / Attaquant Aérien</p>
+                        <div class="description-details">
+                            <strong>Maniabilité extrême et puissance facile d'accès grâce à la technologie Soft Fiber offrant une grande souplesse à l'impact</strong>
+                        </div>
+                    </div>
+                      <p class="price">
+                        <span class="old-price">180,00 €</span>
+                        <span class="discount-tag">-20%</span>
+                        144,00 €
+                    </p>
+                    <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE DE PADEL BABOLAT AIR VERTUO.JPEG')">Voir le produit</button>
+                </div>
+                <div class="card">
+                    <img src="photo/autres sports/RAQUETTE DE PADEL BABOLAT TECHNICAL VERON.JPEG" alt="RAQUETTE DE PADEL BABOLAT TECHNICAL VERON">
+                    <div>
+                        <h4>RAQUETTE DE PADEL BABOLAT TECHNICAL VERON</h4>
+                        <p class="specs">Format Diamant / Puissance Dynamique</p>
+                        <div class="description-details">
+                            <strong>Technologie Carbon Flex apportant de l'explosivité aux smashs et une précision technique irréprochable</strong>
+                        </div>
+                    </div>
+                  <p class="price">
+                        <span class="old-price">200,00 €</span>
+                        <span class="discount-tag">-20%</span>
+                        160,00 €
+                    </p>
+                    <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE DE PADEL BABOLAT TECHNICAL VERON.JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PADEL - DUNLOP -->
+        <div class="brand-section sport-padel active">
+            <div class="brand-header">
+                <h2 class="brand-title">Dunlop — Padel</h2>
+                <span class="brand-badge padel">Padel</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/autres sports/RAQUETTE DE PADEL DUNLOP AERO STAR PRO.JPEG" alt="RAQUETTE DE PADEL DUNLOP AERO STAR PRO">
+                    <div>
+                        <h4>RAQUETTE DE PADEL DUNLOP AERO STAR PRO</h4>
+                        <p class="specs">Format Diamant / Carbone 16K</p>
+                        <div class="description-details">
+                            <strong>Modèle haut de gamme conçu pour une puissance maximale, une stabilité supérieure et une réponse ultra-précise</strong>
+                        </div>
+                    </div>
+                  <p class="price">
+                        <span class="old-price">299,99 €</span>
+                        <span class="discount-tag">-30%</span>
+                        209,99 €
+                    </p>
+                    <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE DE PADEL DUNLOP AERO STAR PRO.JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PADEL - SIUX -->
+        <div class="brand-section sport-padel active">
+            <div class="brand-header">
+                <h2 class="brand-title">Siux — Padel</h2>
+                <span class="brand-badge padel">Padel</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/autres sports/RAQUETTE DE PADEL SIUX ELECTRA STUPA PRO ST4.JPEG" alt="RAQUETTE DE PADEL SIUX ELECTRA STUPA PRO ST4">
+                    <div>
+                        <h4>RAQUETTE DE PADEL SIUX ELECTRA STUPA PRO ST4</h4>
+                        <p class="specs">Modèle Pro / Franco Stupaczuk</p>
+                        <div class="description-details">
+                            <strong>Conception professionnelle offrant un toucher exceptionnel, une finition rugueuse pour la prise d'effet et une maniabilité optimale à la volée</strong>
+                        </div>
+                    </div>
+                      <p class="price">289,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE DE PADEL SIUX ELECTRA STUPA PRO ST4.JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PADEL - WILSON -->
+        <div class="brand-section sport-padel active">
+            <div class="brand-header">
+                <h2 class="brand-title">Wilson — Padel</h2>
+                <span class="brand-badge padel">Padel</span>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="photo/autres sports/RAQUETTE DE PADEL WILSON OPTIX V1 WHITE.JPEG" alt="RAQUETTE DE PADEL WILSON OPTIX V1 WHITE">
+                    <div>
+                        <h4>RAQUETTE DE PADEL WILSON OPTIX V1 WHITE</h4>
+                        <p class="specs">Format Rond / Contrôle & Confort</p>
+                        <div class="description-details">
+                            <strong>Grande zone de frappe idéale pour favoriser la précision, la régularité et le confort lors des échanges intensifs</strong>
+                        </div>
+                    </div>
+                     <p class="price">109,00 €</p>
+                    <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE DE PADEL WILSON OPTIX V1 WHITE.JPEG')">Voir le produit</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= TENNIS ================= -->
+
+        <!-- TENNIS - WILSON -->
+        <div class="brand-section sport-tennis active">
+            <div class="brand-header">
+                <h2 class="brand-title">Wilson — Tennis</h2>
                 <span class="brand-badge">Tennis</span>
             </div>
             <div class="grid">
@@ -350,7 +496,7 @@
                             <strong>Stabilité accrue et sensations connectées incomparables. Référence incontournable pour les joueurs offensifs cherchant contrôle et précision absolue</strong> 
                         </div>
                     </div>
-		    <p class="price">270,00 €</p>
+                    <p class="price">270,00 €</p>
                     <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE WILSON BLADE 100 V9 (300 GR).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
@@ -362,7 +508,7 @@
                             <strong>Flexibilité révolutionnaire et stabilité optimale. Procure un confort de frappe hors du commun tout en maintenant un excellent niveau de contrôle</strong> 
                         </div>
                     </div>
-		    <p class="price">250,00 €</p>
+                    <p class="price">250,00 €</p>
                     <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE WILSON CLASH 100 PRO V3 (305 GR).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
@@ -371,18 +517,19 @@
                         <h4>RAQUETTE WILSON JUNIOR ULTRA 25 V3</h4>
                         <p class="specs">Poids : 235 g — Gamme Junior</p>
                         <div class="description-details">
-                            <strong> Parfaite pour les jeunes compétiteurs en herbe. Légère, maniable et puissante, elle facilite l'apprentissage des gestes techniques du tennis moderne</strong>
+                            <strong>Parfaite pour les jeunes compétiteurs en herbe. Légère, maniable et puissante, elle facilite l'apprentissage des gestes techniques du tennis moderne</strong>
                         </div>
                     </div>
- 			<p class="price">125,00 €</p>
+                    <p class="price">125,00 €</p>
                     <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE WILSON JUNIOR ULTRA 25 V3 (235 GR).JPEG')">Voir le produit</button>
                 </div>
             </div>
+        </div>
 
-        <!-- HEAD -->
-        <div id="head" class="brand-section active">
+        <!-- TENNIS - HEAD -->
+        <div class="brand-section sport-tennis active">
             <div class="brand-header">
-                <h2 class="brand-title">Head</h2>
+                <h2 class="brand-title">Head — Tennis</h2>
                 <span class="brand-badge">Tennis</span>
             </div>
             <div class="grid">
@@ -395,7 +542,7 @@
                             <strong>Maniabilité et puissance facilitée. Idéale pour les joueurs en progression recherchant tolérance et confort. Plan de cordage 16x19 optimisé pour la prise d'effet</strong> 
                         </div>
                     </div>
-		<p class="price">130,00 €</p>
+                    <p class="price">130,00 €</p>
                     <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE HEAD IG CHALLENGE TEAM PURPLE (265 GR).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
@@ -407,16 +554,16 @@
                             <strong>Conçue spécifiquement pour accompagner les jeunes joueurs dans leur apprentissage. Légère et équilibrée pour faciliter le geste et prévenir les blessures</strong> 
                         </div>
                     </div>
-			<p class="price">39,90 €</p>
+                    <p class="price">39,90 €</p>
                     <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE HEAD SPEED JUNIOR SERIES.JPEG')">Voir le produit</button>
                 </div>
             </div>
         </div>
 
-        <!-- BABOLAT -->
-        <div id="babolat" class="brand-section active">
+        <!-- TENNIS - BABOLAT -->
+        <div class="brand-section sport-tennis active">
             <div class="brand-header">
-                <h2 class="brand-title">Babolat</h2>
+                <h2 class="brand-title">Babolat — Tennis</h2>
                 <span class="brand-badge">Tennis</span>
             </div>
             <div class="grid">
@@ -429,7 +576,7 @@
                             <strong>Inspirée de la célèbre gamme Aero, elle offre maniabilité, légèreté et un excellent accès aux effets pour progresser rapidement avec style</strong> 
                         </div>
                     </div>
-		<p class="price">109,95 €</p>
+                    <p class="price">109,95 €</p>
                     <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE BABOLAT BOOST AERO (260 GR).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
@@ -441,7 +588,7 @@
                             <strong>Axée sur le confort et la facilité de jeu. Conçue pour absorber les vibrations et offrir des sensations douces à chaque frappe</strong> 
                         </div>
                     </div>
-   			<p class="price">159,95 €</p>
+                    <p class="price">159,95 €</p>
                     <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE BABOLAT EVO LITE PINK (260 GR).JPEG')">Voir le produit</button>
                 </div>
                 <div class="card">
@@ -453,7 +600,7 @@
                             <strong>Version allégée de la Pure Aero officielle. Parfaite pour générer un maximum de lift tout en conservant une grande maniabilité en fond de court</strong> 
                         </div>
                     </div>
-		    <p class="price">
+                    <p class="price">
                         <span class="old-price">219,95 €</span>
                         <span class="discount-tag">-20%</span>
                         175,96 €
@@ -469,7 +616,7 @@
                             <strong>Destinée aux joueurs d'un bon niveau technique recherchant un compromis explosif entre puissance brute et précision chirurgicale (tamis 98 sq in)</strong> 
                         </div>
                     </div>
-			<p class="price">
+                    <p class="price">
                         <span class="old-price">279,95 €</span>
                         <span class="discount-tag">-30%</span>
                         195,96 €
@@ -479,10 +626,10 @@
             </div>
         </div>
 
-        <!-- YONEX -->
-        <div id="yonex" class="brand-section active">
+        <!-- TENNIS - YONEX -->
+        <div class="brand-section sport-tennis active">
             <div class="brand-header">
-                <h2 class="brand-title">Yonex</h2>
+                <h2 class="brand-title">Yonex — Tennis</h2>
                 <span class="brand-badge">Tennis</span>
             </div>
             <div class="grid">
@@ -495,7 +642,7 @@
                             <strong>Technologie aérodynamique de pointe pour favoriser la vitesse de bras et le lift. Cadre maniable combinant précision et toucher de balle typique Yonex</strong> 
                         </div>
                     </div>
-			<p class="price">
+                    <p class="price">
                         <span class="old-price">260,00 €</span>
                         <span class="discount-tag">-20%</span>
                         208,00 €
@@ -511,7 +658,7 @@
                             <strong>Forme isométrique élargissant le sweet spot (zone de centrage idéale). Offre un grand confort, de la tolérance et une puissance facile d'accès</strong> 
                         </div>
                     </div>
-			<p class="price">
+                    <p class="price">
                         <span class="old-price">289,00 €</span>
                         <span class="discount-tag">-20%</span>
                         231,20 €
@@ -519,9 +666,6 @@
                     <button class="buy-btn" onclick="openModal('photo/autres sports/RAQUETTE YONEX EZONE 100L BLAST BLUE (285 GR).JPEG')">Voir le produit</button>
                 </div>
             </div>
-        </div>
-
-      
         </div>
 
     </div>
@@ -537,23 +681,26 @@
     </footer>
 
     <script>
-        function openBrand(brandId, element) {
-            // Retirer la classe active de tous les boutons
-            const buttons = document.querySelectorAll('.tab-btn');
+        function filterSport(sport, element) {
+            // Activer le bouton sélectionné
+            const buttons = document.querySelectorAll('.tabs-container .tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Ajouter la classe active au bouton cliqué
             element.classList.add('active');
 
-            // Gérer l'affichage des sections
-            const sections = document.querySelectorAll('.brand-section');
-            sections.forEach(section => {
-                if (brandId === 'all' || section.id === brandId) {
-                    section.classList.add('active');
-                } else {
-                    section.classList.remove('active');
-                }
-            });
+            // Afficher ou masquer les sections selon le sport choisi
+            const padelSections = document.querySelectorAll('.sport-padel');
+            const tennisSections = document.querySelectorAll('.sport-tennis');
+
+            if (sport === 'all') {
+                padelSections.forEach(s => s.classList.add('active'));
+                tennisSections.forEach(s => s.classList.add('active'));
+            } else if (sport === 'tennis') {
+                padelSections.forEach(s => s.classList.remove('active'));
+                tennisSections.forEach(s => s.classList.add('active'));
+            } else if (sport === 'padel') {
+                padelSections.forEach(s => s.classList.add('active'));
+                tennisSections.forEach(s => s.classList.remove('active'));
+            }
         }
 
         /* Fonctions pour afficher/masquer la modale de l'image */
