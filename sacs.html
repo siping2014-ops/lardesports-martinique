@@ -104,6 +104,7 @@
       justify-content: space-between;
       padding: 15px;
       text-align: center;
+      position: relative;
     }
 
     .product-card img {
@@ -130,6 +131,20 @@
       color: #2563eb;
       font-weight: bold;
       margin-bottom: 15px;
+    }
+
+    /* Étiquette "Uniquement sur commande" */
+    .badge-order {
+      display: inline-block;
+      background-color: #d97706;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .buy-btn {
@@ -215,6 +230,9 @@
     <div class="filter-bar">
       <button class="filter-btn active" onclick="filterProducts('all', event)">Toutes les marques</button>
       <button class="filter-btn" onclick="filterProducts('babolat', event)">Babolat</button>
+      <button class="filter-btn" onclick="filterProducts('felet', event)">Felet</button>
+      <button class="filter-btn" onclick="filterProducts('fz-forza', event)">FZ Forza</button>
+      <button class="filter-btn" onclick="filterProducts('kawasaki', event)">Kawasaki</button>
       <button class="filter-btn" onclick="filterProducts('lining', event)">Li-Ning</button>
       <button class="filter-btn" onclick="filterProducts('victor', event)">Victor</button>
       <button class="filter-btn" onclick="filterProducts('yonex', event)">Yonex</button>
@@ -236,6 +254,81 @@
         <h3>SAC BABOLAT COURT L</h3>
         <p class="description">Grand sac de sport adapté au tennis et badminton avec grands compartiments.</p>
         <p class="price">89,95 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <!-- FELET -->
+      <article class="product-card" data-category="felet">
+        <img class="product-img" src="photo/sacs/Sac Felet Trenzy Pro V2 BLEU.JPEG" alt="Sac Felet Trenzy Pro V2 BLEU">
+        <h3>SAC FELET TRENZY PRO V2 BLEU</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Sac rectangulaire spacieux blanc avec finitions bleu cyan et finitions iridescentes.</p>
+        <p class="price">100,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="felet">
+        <img class="product-img" src="photo/sacs/Sac Felet Trenzy Pro V2 VERT.JPEG" alt="Sac Felet Trenzy Pro V2 VERT">
+        <h3>SAC FELET TRENZY PRO V2 VERT</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Sac rectangulaire élégant blanc avec détails vert néon et poches zippées.</p>
+        <p class="price">100,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <!-- FZ FORZA -->
+      <article class="product-card" data-category="fz-forza">
+        <img class="product-img" src="photo/sacs/Sac Fz Forza Game 6R Noir.JPEG" alt="Sac Fz Forza Game 6R Noir">
+        <h3>SAC FZ FORZA GAME 6R NOIR</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Thermobag 6 raquettes épuré noir avec logo FZ Forza contrasté.</p>
+        <p class="price">45,00€</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="fz-forza">
+        <img class="product-img" src="photo/sacs/Sac Fz Forza Game 6R Rouge.JPEG" alt="Sac Fz Forza Game 6R Rouge">
+        <h3>SAC FZ FORZA GAME 6R ROUGE</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Thermobag 6 raquettes rouge et noir dynamique avec grands compartiments.</p>
+        <p class="price">45,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <!-- KAWASAKI -->
+      <article class="product-card" data-category="kawasaki">
+        <img class="product-img" src="photo/sacs/Thermo-Bag Kawasaki K1G00-C8903 Noir.JPEG" alt="Thermo-Bag Kawasaki K1G00-C8903 Noir">
+        <h3>THERMOBAG KAWASAKI K1G00-C8903 NOIR</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Thermobag grand volume noir et blanc avec plusieurs compartiments et poignée renforcée.</p>
+        <p class="price">69,90 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="kawasaki">
+        <img class="product-img" src="photo/sacs/Thermo-Bag Kawasaki KBB-8308 X6 Orange.JPEG" alt="Thermo-Bag Kawasaki KBB-8308 X6 Orange">
+        <h3>THERMOBAG KAWASAKI KBB-8308 X6 ORANGE</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Thermobag 6 raquettes noir et orange dynamique avec poche latérale zippée.</p>
+        <p class="price">44,90 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="kawasaki">
+        <img class="product-img" src="photo/sacs/Thermo-Bag Kawasaki Kbb-8327D Bleu Noir.JPEG" alt="Thermo-Bag Kawasaki Kbb-8327D Bleu Noir">
+        <h3>THERMOBAG KAWASAKI KBB-8327D BLEU NOIR</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Thermobag bleu et noir style compétition avec logo doré et aération de poche.</p>
+        <p class="price">39,90 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="kawasaki">
+        <img class="product-img" src="photo/sacs/Thermo-Bag Kawasaki Kbb-8327D Bleu Rouge.JPEG" alt="Thermo-Bag Kawasaki Kbb-8327D Bleu Rouge">
+        <h3>THERMOBAG KAWASAKI KBB-8327D BLEU ROUGE</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Thermobag bi-color bleu et rouge vif multi-compartiments pour équipement complet.</p>
+        <p class="price">39,90 €</p>
         <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
       </article>
 
@@ -291,9 +384,55 @@
       </article>
 
       <article class="product-card" data-category="yonex">
-        <img class="product-img" src="photo/sacs/SAC YONEX 42523EX.JPEG" alt="SAC YONEX 42523EX">
-        <h3>SAC YONEX 42523EX</h3>
-        <p class="description">Sac de sport compact et léger bleu avec compartiment principal et poche zippée.</p>
+        <img class="product-img" src="photo/sacs/Sac Yonex Club 52526.JPEG" alt="Sac Yonex Club 52526">
+        <h3>SAC YONEX CLUB 52526</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Thermobag Yonex vert et blanc ergonomique avec compartiment raquettes et bretelles.</p>
+        <p class="price">60,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="yonex">
+        <img class="product-img" src="photo/sacs/Sac Yonex Club 52523 BB.JPEG" alt="Sac Yonex Club 52523 BB">
+        <h3>SAC YONEX CLUB 52523 BLEU / BLANC</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Sac de sport compact bleu et blanc avec bandoulière et poche latérale zippée.</p>
+        <p class="price">45,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="yonex">
+        <img class="product-img" src="photo/sacs/Sac Yonex Club 52523 NB.JPEG" alt="Sac Yonex Club 52523 NB">
+        <h3>SAC YONEX CLUB 52523 NOIR / BLEU</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Sac compact noir et bleu ciel élégant avec compartiments pratiques.</p>
+        <p class="price">45,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="yonex">
+        <img class="product-img" src="photo/sacs/Sac Yonex 42523Ex BLEU.JPEG" alt="Sac Yonex 42523Ex BLEU">
+        <h3>SAC YONEX 42523EX BLEU</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Sac de sport bleu royal et bleu marine avec logo argenté.</p>
+        <p class="price">60,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="yonex">
+        <img class="product-img" src="photo/sacs/Sac Yonex 42523Ex NOIR.JPEG" alt="Sac Yonex 42523Ex NOIR">
+        <h3>SAC YONEX 42523EX NOIR</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Sac de sport compact noir mat épuré avec bandoulière réglable.</p>
+        <p class="price">60,00 €</p>
+        <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
+      </article>
+
+      <article class="product-card" data-category="yonex">
+        <img class="product-img" src="photo/sacs/SAC YONEX 42523EX GN.JPEG" alt="SAC YONEX 42523EX gris et noir">
+        <h3>SAC YONEX 42523EX GRIS / NOIR</h3>
+        <span class="badge-order">Uniquement sur commande</span>
+        <p class="description">Sac de sport thermobag Yonex bicolore gris chiné et noir avec compartiment raquettes.</p>
         <p class="price">60,00 €</p>
         <button class="buy-btn" onclick="openModalFromCard(this)">Voir le produit</button>
       </article>
